@@ -1,5 +1,12 @@
 # EventPlanner
 
+
+## Setting up the environment
+
+Run `npm install` after you clone the project to your machine.
+
+# Angular 7
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
 ## Development server
