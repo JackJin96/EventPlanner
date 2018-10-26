@@ -23,7 +23,11 @@ var request = require("request");
 
 var options = { method: 'GET',
   url: 'https://www.eventbriteapi.com/v3/events/',
-  qs: {  'location.address': 'Boston', 'location.within': '1mi',
+  qs: 
+   { token: '7JK6P23DAHC7QIMSHZYF',
+     'location.address': 'Boston',
+     'start_date.range_start': '2018-11-08T15:41:05Z',
+     'start_date.range_end': '2018-11-10T15:41:05Z' },
   token: '7JK6P23DAHC7QIMSHZYF'
  },
   headers:
