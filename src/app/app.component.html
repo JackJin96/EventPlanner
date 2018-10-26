@@ -81,7 +81,7 @@ header {
   <h4>Events:</h4>
   <ul>
     <li *ngFor="let item of events; let i = index">
-      {{i}} {{item}}
+      {{i}} <a href={{item}} target="_blank">Event Link</a>
     </li>
   </ul>
 </div>
