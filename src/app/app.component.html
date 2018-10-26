@@ -79,7 +79,11 @@ header {
 <hr>
 <div>
   <h4>Events:</h4>
-  {{ events }}
+  <ul>
+    <li *ngFor="let item of events; let i = index">
+      {{i}} {{item}}
+    </li>
+  </ul>
 </div>
 </div>
 

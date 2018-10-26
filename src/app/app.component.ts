@@ -73,8 +73,14 @@ export class AppComponent {
 
     this.http.get(`http://localhost:${port}/api/events`, {headers: headers})
     .subscribe(data => {
-      console.log(data);
-      this.events = JSON.stringify(data);
+      console.log(typeof(data));
+      //console.log(data);
+      const res = [];
+      Object.keys(data).forEach(key => {
+        res.push(data[key].url);
+      });
+      console.log(res);
+      this.events = res;
     });
   }
 
