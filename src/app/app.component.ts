@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
+import { EventPageComponent } from './event-page/event-page.component';
+import { fromEventPattern } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_di
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'EventPlanner';
   
   location = "";
