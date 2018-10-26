@@ -13,5 +13,5 @@ export class EventPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  cats = () => this.catService.getAllCats();
+  cats = this.catService.getAllCats();
 }
