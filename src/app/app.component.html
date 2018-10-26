@@ -43,26 +43,54 @@ header {
 </style>
 </head>	
 
-<body>
+
 
 <header>
 <h1>EventPlanner</h1>
 </header>
 
+<body>
 
 
-<form>
-  Location:<br>
-  <input type="text" name="Location"><br>
-  Date:<br>
-  <input type="text" name="Date">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div>
+
+
+  <label for="Location"> Location</label>
+  <input 
+  type="text" 
+  id="Location"
+  ngModel
+  name="location">
+</div>
+<div>
+
+
+  <label for="date"> Date </label>
+  <input type="text" 
+  id="Date"
+  ngModel
+  name="date">
+
+</div>
+  <button type="submit"> Submit </button>
 </form>
 
-<form>
-  <input type="submit" name="gender" value="submit" checked><br>
 
-</form>
+<hr>
+<div *ngIf="submitted">
+<h4>You have entered this:</h4>
+<p>Location: {{ location }}</p>
+<p>Date: {{ date }}</p>
 
+
+<hr>
+
+<div>
+  <h4>Events:</h4>
+
+</div>
+</div>
 
 </body>
 </html>
