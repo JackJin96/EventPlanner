@@ -6,7 +6,12 @@ Integrated event organization using FB and Eventbrite
 
 Run `npm install` after you clone the project to your machine.
 
-# Angular 7
+## Runing the project
+
+Run `ng serve` for frontend server.
+Run `node server.js` for backend node server.
+
+## Angular 7
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 

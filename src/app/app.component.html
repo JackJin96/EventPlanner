@@ -28,25 +28,42 @@ header {
 
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
   <div>
+    <label for="location"> Location</label>
+    <input
+    type="text"
+    id="Location"
+    ngModel
+    name="location"/>
+  </div>
+
+  <div>
+    <label for="searh_range"> Search Range: within </label>
+    <input type="text"
+    id="SearchRange"
+    ngModel
+    name="search_range"/>
+    miles
+  </div>
+
+  <div>
+    <label for="start_date"> Start Date </label>
+    <input type="text"
+    id="StartDate"
+    ngModel
+    name="start_date"/>
+    <p>(format: YYYY-MM-DD)</p>
+  </div>
 
 
-  <label for="Location"> Location</label>
-  <input 
-  type="text" 
-  id="Location"
-  ngModel
-  name="location">
-</div>
-<div>
+  <div>
+    <label for="end_date"> End Date </label>
+    <input type="text"
+    id="EndDate"
+    ngModel
+    name="end_date"/>
+    <p>(format: YYYY-MM-DD)</p>
+  </div>
 
-
-  <label for="date"> Date </label>
-  <input type="text" 
-  id="Date"
-  ngModel
-  name="date">
-
-</div>
   <button type="submit"> Submit </button>
 </form>
 
@@ -55,19 +72,18 @@ header {
 <div *ngIf="submitted">
 <h4>You have entered this:</h4>
 <p>Location: {{ location }}</p>
-<p>Date: {{ date }}</p>
-
+<p>Search Range: {{ search_range }} miles</p>
+<p>Start Date: {{ display_start_date }}</p>
+<p>End Date: {{ display_end_date }}</p>
 
 <hr>
-
 <div>
   <h4>Events:</h4>
-
+  {{ events }}
 </div>
 </div>
 
 </body>
 </html>
-
 
 <router-outlet></router-outlet>
