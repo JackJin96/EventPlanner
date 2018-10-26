@@ -23,7 +23,7 @@ export class AppComponent {
   end_date = "";
   display_end_date = "";
   search_range = 10;
-  events = {};
+  events = [];
 
   // getCat() {
   //   const headerDict = {
@@ -44,6 +44,10 @@ export class AppComponent {
   // }
 
   submitted = false;
+
+  get_substr(s) {
+    return s.substring(0,500);
+  }
 
   callServer(port) {
     const headers = new HttpHeaders()
@@ -75,12 +79,17 @@ export class AppComponent {
     .subscribe(data => {
       console.log(typeof(data));
       //console.log(data);
-      const res = [];
+      const events = [];
       Object.keys(data).forEach(key => {
-        res.push(data[key].url);
+        // console.log(data[key].description.text.length);
+        events.push({ url: data[key].url,
+                      name: data[key].name,
+                      description_text: (data[key].description.text.length > 500)?
+                                     data[key].description.text.substring(0, 500) :
+                                     data[key].description.text });
       });
-      console.log(res);
-      this.events = res;
+      console.log(events);
+      this.events = events;
     });
   }
 
