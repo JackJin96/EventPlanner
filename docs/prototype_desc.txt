@@ -1,0 +1,11 @@
+Group 3: EventPlanner
+Members: Hanchong Jin, Harsh Patel, Ellen Mak, Nathan Ackermann
+
+A document explaining why you chose the technology stack that you are demonstrating; I’d like to know if you considered other stacks, and the process you used to choose the stack for the prototype. The doc should be added to your ‘docs’ folder on github.
+
+We’re using a MEAN stack (MongoDB, Express.js, Angular, Node.js) development approach. Why we’re using this is because Javascript is all along the entire process. MEAN stack uses JSON which is what our API data is formed as. 
+
+The tech stack we chose for the backend is node.js. The reason we chose node.js for our backend is because it’s lightweight, efficient, and has ability to use JavaScript on both frontend and backend and opens new avenues for development. Node.js is very suitable for backend API integration, for example Postman will give you a snippet of code that you can simply copy and passed into Node.js. 
+
+The reason we chose Angular for our front end because it uses MVC architecture for developing web application. Since it’s maintained by Google it has a huge support community and it’s very easy to find information and debug Angular off the web. A big advantage is Angular is that we have no need to use observable functions; Angular analyses the page DOM and builds the bindings based on the Angular-specific element attributes. It’s also faster to deploy since Angular modifies the page DOM directly instead of adding inner HTML code.
+
