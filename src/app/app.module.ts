@@ -5,12 +5,10 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventPageComponent } from './event-page/event-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EventPageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
