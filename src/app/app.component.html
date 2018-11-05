@@ -47,7 +47,8 @@
           <p>(format: YYYY-MM-DD)</p>
         </div>
 
-        <button type="submit"> Submit </button>
+        <button type="submit"class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span> Search </button>
       </form>
 
       <div class="col-sm-6">
@@ -64,27 +65,31 @@
     <div class="row resultBox" *ngIf="submitted">
       <div class="col-sm-6">
         <h4>EventBrite Events:</h4>
-        <ul>
-          <li *ngFor="let EB_event of EB_events; let i = index">
-            <h3>{{i+1}} {{ EB_event.name.text }}</h3>
+        <div class = "panel-group">
+          <div class = "panel panel-default"  *ngFor="let EB_event of EB_events; let i = index">
+            <div class = "panel-heading">
+            <h3>{{i+1}} {{ EB_event.name.text }}</h3></div>
+            <div class = "panel-body">
             <p>Date: {{ EB_event.date }}</p>
             <p>{{ EB_event.description_text }}</p>
             <p>Source: <label>{{ EB_event.website }}</label></p>
-            <a href={{EB_event.url}} target="_blank">Event Link</a>
-          </li>
-        </ul>
+            <a href={{EB_event.url}} target="_blank">Event Link</a></div>
+          </div>
+        </div>
       </div>
       <div class="col-sm-6">
         <h4>TicketMaster Events:</h4>
-        <ul>
-          <li *ngFor="let TM_event of TM_events; let i = index">
-            <h3>{{i+1}} {{ TM_event.name }}</h3>
+        <div class = "panel-group">
+          <div class = "panel panel-default" *ngFor="let TM_event of TM_events; let i = index">
+            <div class = "panel-heading">
+            <h3>{{i+1}} {{ TM_event.name }}</h3></div>
+            <div class = "panel-body">
             <p>Date: {{ TM_event.date }}</p>
             <p>{{ TM_event.description_text }}</p>
             <p>Source: <label>{{ TM_event.website }}</label></p>
-            <a href={{TM_event.url}} target="_blank">Event Link</a>
-          </li>
-        </ul>
+            <a href={{TM_event.url}} target="_blank">Event Link</a></div>
+          </div>
+        </div>
       </div>
     </div>
 
