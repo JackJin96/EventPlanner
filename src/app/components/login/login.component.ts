@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     console.log('signin with google triggered!');
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => console.log(x));
-    console.log(this.user);
   }
 
   signInWithFB(): void {
