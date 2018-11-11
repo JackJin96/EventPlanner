@@ -1,13 +1,26 @@
-<div class='container'>
-  <h1>Login works!</h1>
-</div>
 
-<button class="btn btn-primary" (click)="signInWithGoogle()">Google Login</button>
-<div *ngIf='loggedIn'>
-  <img src="{{ user.photoUrl }}">
+<div class='container'>
+  
+  <h1>Login works!</h1>
+
+ 
   <div>
-    <h4>{{ user.name }}</h4>
-    <p>{{ user.email }}</p>
+      <button class="btn btn-primary" (click)="signInWithGoogle()">Google Login</button>
   </div>
+
+ 
+    <div *ngIf='loggedIn' class='body'>
+      <div class='imgcontainer'>
+        <img src="{{ user.photoUrl }}">
+      </div>
+
+       <div>
+         <h4>{{ user.name }}</h4>
+         <p>{{ user.email }}</p>
+      </div>
+
+
+      <button class="btn btn-primary" (click)="signOut()">Log Out</button>
+      </div>
+
 </div>
-<button class="btn btn-primary" (click)="signOut()">Log Out</button>

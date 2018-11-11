@@ -6,8 +6,9 @@
   <div class="container">
     <div class="row">
       <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="col-sm-6">
+        <div class='inputs'>
         <div>
-          <label for="location"> Location</label>
+          <label for="location"> Location: <br> </label>
           <input
           type="text"
           id="Location"
@@ -16,7 +17,8 @@
         </div>
 
         <div>
-          <label for="searh_range"> Search Range: within </label>
+          <label for="searh_range"> Search Range: </label>
+          within
           <input type="text"
           id="SearchRange"
           ngModel
@@ -25,23 +27,24 @@
         </div>
 
         <div>
-          <label for="start_date"> Start Date </label>
+          <label for="start_date"> Start Date (YYYY-MM-DD): <br> </label>
+          
           <input type="text"
           id="StartDate"
           ngModel
           name="start_date"/>
-          <p>(format: YYYY-MM-DD)</p>
         </div>
 
 
         <div>
-          <label for="end_date"> End Date </label>
+          <label for="end_date"> End Date (YYYY-MM-DD): <br> </label>
+          
           <input type="text"
           id="EndDate"
           ngModel
-          name="end_date"/>
-          <p>(format: YYYY-MM-DD)</p>
+          name="end_date"/>  
         </div>
+      </div>
 
         <button type="submit"class="btn btn-default">
             <span class="glyphicon glyphicon-search"></span> Search </button>
