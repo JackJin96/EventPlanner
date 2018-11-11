@@ -1,5 +1,5 @@
 # EventPlanner
-Integrated event organization using FB and Eventbrite
+Integrated event organization using Ticketmaster and Eventbrite
 
 
 ## Setting up the environment

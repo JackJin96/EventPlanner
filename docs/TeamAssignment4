@@ -1,0 +1,7 @@
+1. Cache:
+
+We will be reciving data from EventBrite API and TicketMaster API. With this data we will cache it in the mongoose database. This is like MongoDB but in the cloud.
+
+2 Data documentation:
+
+Please refer to the sequence diagram to view our ER Diagram. We are using Mongoose for this.

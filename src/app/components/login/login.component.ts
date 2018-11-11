@@ -29,15 +29,16 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     console.log('signin with google triggered!');
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => console.log(x));
-    console.log(this.user);
   }
 
   signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    console.log('signin with Facebook triggered!');
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then( x => console.log(x));
   }
 
   signOut(): void {
-    this.authService.signOut();
+    console.log('signout triggered!');
+    this.authService.signOut().then(x => console.log(x));
   }
 
 }
