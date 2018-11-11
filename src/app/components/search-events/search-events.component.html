@@ -1,95 +1,92 @@
 <body>
-  <div class="jumbotron text-center">
-      <h1>EventPlanner</h1>
-      <p>Much more than event search.</p>
-  </div>
-  <div class="container">
-    <div class="row">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="col-sm-6">
-        <div class='inputs'>
-        <div>
-          <label for="location"> Location: <br> </label>
-          <input
-          type="text"
-          id="Location"
-          ngModel
-          name="location"/>
-        </div>
-
-        <div>
-          <label for="searh_range"> Search Range: </label>
-          within
-          <input type="text"
-          id="SearchRange"
-          ngModel
-          name="search_range"/>
-          miles
-        </div>
-
-        <div>
-          <label for="start_date"> Start Date (YYYY-MM-DD): <br> </label>
-          
-          <input type="text"
-          id="StartDate"
-          ngModel
-          name="start_date"/>
-        </div>
-
-
-        <div>
-          <label for="end_date"> End Date (YYYY-MM-DD): <br> </label>
-          
-          <input type="text"
-          id="EndDate"
-          ngModel
-          name="end_date"/>  
-        </div>
-      </div>
-
-        <button type="submit"class="btn btn-default">
-            <span class="glyphicon glyphicon-search"></span> Search </button>
-      </form>
-
-      <div class="col-sm-6">
-        <div *ngIf="submitted">
-        <h4>You have entered this:</h4>
-        <p>Location: {{ location }}</p>
-        <p>Search Range: {{ search_range }} miles</p>
-        <p>Start Date: {{ display_start_date }}</p>
-        <p>End Date: {{ display_end_date }}</p>
-        </div>
-      </div>
+    <div class="jumbotron text-center">
+        <h1>EventPlanner</h1>
+        <p>Much more than event search.</p>
     </div>
-
-    <div class="row resultBox" *ngIf="submitted">
-      <div class="col-sm-6">
-        <h4>EventBrite Events:</h4>
-        <div class = "panel-group">
-          <div class = "panel panel-default"  *ngFor="let EB_event of EB_events; let i = index">
-            <div class = "panel-heading">
-            <h3>{{i+1}} {{ EB_event.name.text }}</h3></div>
-            <div class = "panel-body">
-            <p>Date: {{ EB_event.date }}</p>
-            <p>{{ EB_event.description_text }}</p>
-            <p>Source: <label>{{ EB_event.website }}</label></p>
-            <a href={{EB_event.url}} target="_blank">Event Link</a></div>
+    <div class="container">
+      <div class="row">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="col-sm-6">
+          <div>
+            <label for="location"> Location</label>
+            <input
+            type="text"
+            id="Location"
+            ngModel
+            name="location"/>
+          </div>
+  
+          <div>
+            <label for="searh_range"> Search Range: within </label>
+            <input type="text"
+            id="SearchRange"
+            ngModel
+            name="search_range"/>
+            miles
+          </div>
+  
+          <div>
+            <label for="start_date"> Start Date </label>
+            <input type="text"
+            id="StartDate"
+            ngModel
+            name="start_date"/>
+            <p>(format: YYYY-MM-DD)</p>
+          </div>
+  
+  
+          <div>
+            <label for="end_date"> End Date </label>
+            <input type="text"
+            id="EndDate"
+            ngModel
+            name="end_date"/>
+            <p>(format: YYYY-MM-DD)</p>
+          </div>
+  
+          <button type="submit"class="btn btn-default">
+              <span class="glyphicon glyphicon-search"></span> Search </button>
+        </form>
+  
+        <div class="col-sm-6">
+          <div *ngIf="submitted">
+          <h4>You have entered this:</h4>
+          <p>Location: {{ location }}</p>
+          <p>Search Range: {{ search_range }} miles</p>
+          <p>Start Date: {{ display_start_date }}</p>
+          <p>End Date: {{ display_end_date }}</p>
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <h4>TicketMaster Events:</h4>
-        <div class = "panel-group">
-          <div class = "panel panel-default" *ngFor="let TM_event of TM_events; let i = index">
-            <div class = "panel-heading">
-            <h3>{{i+1}} {{ TM_event.name }}</h3></div>
-            <div class = "panel-body">
-            <p>Date: {{ TM_event.date }}</p>
-            <p>{{ TM_event.description_text }}</p>
-            <p>Source: <label>{{ TM_event.website }}</label></p>
-            <a href={{TM_event.url}} target="_blank">Event Link</a></div>
+  
+      <div class="row resultBox" *ngIf="submitted">
+        <div class="col-sm-6">
+          <h4>EventBrite Events:</h4>
+          <div class = "panel-group">
+            <div class = "panel panel-default"  *ngFor="let EB_event of EB_events; let i = index">
+              <div class = "panel-heading">
+              <h3>{{i+1}} {{ EB_event.name.text }}</h3></div>
+              <div class = "panel-body">
+              <p>Date: {{ EB_event.date }}</p>
+              <p>{{ EB_event.description_text }}</p>
+              <p>Source: <label>{{ EB_event.website }}</label></p>
+              <a href={{EB_event.url}} target="_blank">Event Link</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h4>TicketMaster Events:</h4>
+          <div class = "panel-group">
+            <div class = "panel panel-default" *ngFor="let TM_event of TM_events; let i = index">
+              <div class = "panel-heading">
+              <h3>{{i+1}} {{ TM_event.name }}</h3></div>
+              <div class = "panel-body">
+              <p>Date: {{ TM_event.date }}</p>
+              <p>{{ TM_event.description_text }}</p>
+              <p>Source: <label>{{ TM_event.website }}</label></p>
+              <a href={{TM_event.url}} target="_blank">Event Link</a></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>

@@ -1,22 +1,11 @@
 
-<div class='container'>
-<<<<<<< HEAD
+<!--<div class='container'>
   
   <h1>Login works!</h1>
 
  
   <div>
       <button class="btn btn-primary" (click)="signInWithGoogle()">Google Login</button>
-=======
-
-<div class='row'>
-  <div *ngIf='loggedIn'>
-    <img src="{{ user.photoUrl }}">
-    <div>
-      <h4>{{ user.name }}</h4>
-      <p>{{ user.email }}</p>
-    </div>
->>>>>>> 6e112106d10b225a9420d4280d65e6842e797004
   </div>
 
  
@@ -35,13 +24,24 @@
       </div>
 
 </div>
-<<<<<<< HEAD
-=======
-<div class='row'>
-    <button class="btn btn-primary" (click)="signInWithGoogle()" *ngIf="!loggedIn">Google Login</button>
-    <button class="btn btn-primary" (click)="signInWithFB()" *ngIf="!loggedIn">Facebook Login</button>
-</div>
-<button class="btn btn-primary" (click)="signOut()" *ngIf="loggedIn">Log Out</button>
-</div>
-  <!-- <div class="col-sm-6"> -->
->>>>>>> 6e112106d10b225a9420d4280d65e6842e797004
+
+-->
+
+<div class='container'>
+
+    <div class='row'>
+      <div *ngIf='loggedIn'>
+        <img src="{{ user.photoUrl }}">
+        <div>
+          <h4>{{ user.name }}</h4>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+        <button class="btn btn-primary" (click)="signInWithGoogle()" *ngIf="!loggedIn">Google Login</button>
+        <button class="btn btn-primary" (click)="signInWithFB()" *ngIf="!loggedIn">Facebook Login</button>
+    </div>
+    <button class="btn btn-primary" (click)="signOut()" *ngIf="loggedIn">Log Out</button>
+    </div>
+    
