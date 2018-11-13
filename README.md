@@ -11,6 +11,11 @@ Run `npm install` after you clone the project to your machine.
 Run `ng serve` for frontend server.
 Run `nodemon server.js` for backend node server.
 
+OR
+
+Now you can run `npm start` for both front end and back end.
+
+# System generated content (ignore)
 ## Angular 7
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
