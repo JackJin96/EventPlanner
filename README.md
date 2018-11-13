@@ -4,7 +4,7 @@ Integrated event organization using Ticketmaster and Eventbrite
 
 ## Setting up the environment
 
-Run `npm install` after you clone the project to your machine.
+Run `npm install` for both front end (client folder) and backend (server folder) after you clone the project to your machine.
 
 ## Runing the project
 
