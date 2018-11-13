@@ -11,31 +11,14 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(bodyParser.json());
 
-// app.route('/api/cats').post((req, res) => {
-//   res.send(201, req.body);
-// });
-
 app.listen(8000, () => {
     console.log('Server started!');
   });
 
-app.route('/api/cats').get((req, res) => {
-  console.log(req.body);
-  res.send({
-    cats: [{ name: 'lilly' }, { name: 'lucy' }]
-  });
-});
-
-app.route('/api/cats/:name').get((req, res) => {
-  const requestedCatName = req.params['name'];
-  res.send({ name: requestedCatName });
-});
-
-/////////////////////////
-
 const request = require("request");
 
-app.route('/api/events/EB').get((req, res) => {
+// EventBrite API
+app.route('/api/v1/events/EB').get((req, res) => {
     location_address = req.headers['location.address'];
     location_within = req.headers['location.within'];
     start_data_range_start = req.headers['start_date.range_start'];
@@ -68,7 +51,8 @@ app.route('/api/events/EB').get((req, res) => {
   });
 });
 
-app.route('/api/events/TM').get((req, res) => {
+// TicketMaster API
+app.route('/api/v1/events/TM').get((req, res) => {
 
   city_name = req.headers['location.address'];
   radius = req.headers['location.within'];
@@ -98,19 +82,3 @@ app.route('/api/events/TM').get((req, res) => {
     res.send(jsonbody._embedded.events);
   });
 });
-
-
-// const TM_ptions = { method: 'GET',
-//   url: 'https://app.ticketmaster.com/discovery/v2/events',
-//   qs:
-//    { city: 'Boston',
-//      apikey: 'yvE2GqWdA8xBuDVumRZQedlmIL1z6mWi%0A' },
-//   headers:
-//    { 'Postman-Token': '98d7934b-1e52-4683-b8e2-0622ab1dda61',
-//      'cache-control': 'no-cache' } };
-
-// request(TM_options, function (error, response, body) {
-//   if (error) throw new Error(error);
-
-//   console.log(body);
-// });

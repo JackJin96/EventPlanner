@@ -44,7 +44,7 @@ export class SearchEventsComponent implements OnInit {
           .set('start_date.range_start', this.start_date)
           .set('start_date.range_end', this.end_date);
 
-    this.http.get(`http://localhost:${port}/api/events/EB`, {headers: EB_headers})
+    this.http.get(`http://localhost:${port}/api/v1/events/EB`, {headers: EB_headers})
     .subscribe(data => {
       console.log(typeof(data));
       console.log(data);
@@ -74,7 +74,7 @@ export class SearchEventsComponent implements OnInit {
           .set('start_date.range_start', this.start_date)
           .set('start_date.range_end', this.end_date);
 
-    this.http.get(`http://localhost:${port}/api/events/TM`, {headers: TM_headers})
+    this.http.get(`http://localhost:${port}/api/v1/events/TM`, {headers: TM_headers})
     .subscribe(data => {
       console.log(typeof(data));
       console.log(data);
