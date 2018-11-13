@@ -32,7 +32,7 @@ export class SearchEventsComponent implements OnInit {
     return s.substring(0,500);
   }
 
-  callServer(port) {
+  getEvents(port) {
     const EB_headers = new HttpHeaders()
           // .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json')
@@ -45,22 +45,21 @@ export class SearchEventsComponent implements OnInit {
           .set('start_date.range_end', this.end_date);
 
     this.http.get(`http://localhost:${port}/api/v1/events/EB`, {headers: EB_headers})
-    .subscribe(data => {
+    .subscribe( (data:any) => {
       console.log(typeof(data));
-      console.log(data);
-      const events = [];
-      Object.keys(data).forEach(key => {
-        // console.log(data[key].description.text.length);
-        events.push({ url: data[key].url,
-                      name: data[key].name,
-                      date: data[key].start.local.substring(0,10),
-                      description_text: (data[key].description.text.length > 500)?
-                                     data[key].description.text.substring(0, 500) :
-                                     data[key].description.text,
+      console.log(data.events);
+      const eventsRes = [];
+      Object.keys(data.events).forEach(key => {
+        eventsRes.push({ url: data.events[key].url,
+                      name: data.events[key].name,
+                      date: data.events[key].start.local.substring(0,10),
+                      description_text: (data.events[key].description.text.length > 500)?
+                                     data.events[key].description.text.substring(0, 500) :
+                                     data.events[key].description.text,
                       website: "EventBrite" });
       });
-      console.log(events);
-      this.EB_events = events;
+      console.log(eventsRes);
+      this.EB_events = eventsRes;
     });
 
     const TM_headers = new HttpHeaders()
@@ -80,7 +79,6 @@ export class SearchEventsComponent implements OnInit {
       console.log(data);
       const events = [];
       Object.keys(data).forEach(key => {
-        // console.log(data[key].description.text.length);
         events.push({ url: data[key].url,
                       name: data[key].name,
                       date: data[key].dates.start.localDate,
@@ -106,6 +104,6 @@ export class SearchEventsComponent implements OnInit {
     console.log(this.location_within);
     console.log(this.display_start_date);
     console.log(this.display_end_date);
-    this.callServer(8000);
+    this.getEvents(8000);
   }
 }
