@@ -45,6 +45,7 @@ const getEventsTM = (req) => {
     radius = req.query['location.within'];
     start_data_range_start = req.query['start_date.range_start'];
     start_date_range_end = req.query['start_date.range_end'];
+    size = req.query['size'];
 
     const TM_options = { method: 'GET',
         url: 'https://app.ticketmaster.com/discovery/v2/events',
@@ -53,7 +54,8 @@ const getEventsTM = (req) => {
         'city': city_name,
         'radius': radius,
         'startDateTime': start_data_range_start,
-        'endDateTime': start_date_range_end
+        'endDateTime': start_date_range_end,
+        'size': size
         }
         ,
         headers:
