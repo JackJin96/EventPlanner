@@ -3,12 +3,12 @@ const bodyParser = require('body-parser');
 
 const getEventsEB = (req) => {
 
-    // console.log(req.headers);
+    // console.log(req.query);
     // console.log('\n\n\n!!!!');
-    location_address = req.headers['location.address'];
-    location_within = req.headers['location.within'];
-    start_data_range_start = req.headers['start_date.range_start'];
-    start_date_range_end = req.headers['start_date.range_end'];
+    location_address = req.query['location.address'];
+    location_within = req.query['location.within'];
+    start_data_range_start = req.query['start_date.range_start'];
+    start_date_range_end = req.query['start_date.range_end'];
 
     // console.log(location_address);
     // console.log(start_data_range_start);
@@ -33,6 +33,7 @@ const getEventsEB = (req) => {
         request(EB_options, function (error, response, body) {
             if (error) throw new Error(error);
             jsonbody = JSON.parse(body);
+            console.log(Object.keys(jsonbody.events).length);
             resolve(jsonbody);
         });
     });
@@ -40,10 +41,10 @@ const getEventsEB = (req) => {
 
 const getEventsTM = (req) => {
 
-    city_name = req.headers['location.address'];
-    radius = req.headers['location.within'];
-    start_data_range_start = req.headers['start_date.range_start'];
-    start_date_range_end = req.headers['start_date.range_end'];
+    city_name = req.query['location.address'];
+    radius = req.query['location.within'];
+    start_data_range_start = req.query['start_date.range_start'];
+    start_date_range_end = req.query['start_date.range_end'];
 
     const TM_options = { method: 'GET',
         url: 'https://app.ticketmaster.com/discovery/v2/events',
@@ -64,7 +65,6 @@ const getEventsTM = (req) => {
         request(TM_options, function (error, response, body) {
             if (error) throw new Error(error);
             jsonbody = JSON.parse(body);
-            console.log(jsonbody._embedded.events);
             resolve(jsonbody._embedded.events);
         });
     });
