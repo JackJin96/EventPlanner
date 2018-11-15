@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { _def } from '@angular/core/src/view/provider';
 
 @Component({
@@ -33,7 +33,7 @@ export class SearchEventsComponent implements OnInit {
   }
 
   getEvents(port) {
-    const EB_headers = new HttpHeaders()
+    const EB_headers = new HttpParams()
           // .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json')
           .set('Access-Control-Allow-Headers', 'Content-Type')
@@ -44,7 +44,7 @@ export class SearchEventsComponent implements OnInit {
           .set('start_date.range_start', this.start_date)
           .set('start_date.range_end', this.end_date);
 
-    this.http.get(`http://localhost:${port}/api/v1/events/EB`, {headers: EB_headers})
+    this.http.get(`http://localhost:${port}/api/v1/events/EB`, {params: EB_headers})
     .subscribe( (data:any) => {
       console.log(typeof(data));
       console.log(data.events);
@@ -63,7 +63,7 @@ export class SearchEventsComponent implements OnInit {
       this.EB_events = eventsRes;
     });
 
-    const TM_headers = new HttpHeaders()
+    const TM_headers = new HttpParams()
           // .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json')
           .set('Access-Control-Allow-Headers', 'Content-Type')
@@ -72,9 +72,10 @@ export class SearchEventsComponent implements OnInit {
           .set('location.address', this.location)
           .set('location.within', this.location_within.toString())
           .set('start_date.range_start', this.start_date)
-          .set('start_date.range_end', this.end_date);
+          .set('start_date.range_end', this.end_date)
+          .set('size', '50');
 
-    this.http.get(`http://localhost:${port}/api/v1/events/TM`, {headers: TM_headers})
+    this.http.get(`http://localhost:${port}/api/v1/events/TM`, {params: TM_headers})
     .subscribe(data => {
       console.log(typeof(data));
       console.log(data);
