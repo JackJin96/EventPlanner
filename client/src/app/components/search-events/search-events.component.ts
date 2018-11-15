@@ -51,12 +51,13 @@ export class SearchEventsComponent implements OnInit {
       const eventsRes = [];
       Object.keys(data.events).forEach(key => {
         eventsRes.push({ url: data.events[key].url,
-                      name: data.events[key].name,
-                      date: data.events[key].start.local.substring(0,10),
-                      description_text: (data.events[key].description.text.length > 500)?
-                                     data.events[key].description.text.substring(0, 500) :
-                                     data.events[key].description.text,
-                      website: "EventBrite" });
+                         name: data.events[key].name,
+                         date: data.events[key].start.local.substring(0,10),
+                         description_text: (data.events[key].description.text &&
+                                          data.events[key].description.text.length > 500)?
+                                          data.events[key].description.text.substring(0, 500) :
+                                          data.events[key].description.text,
+                         website: "EventBrite" });
       });
       console.log(eventsRes);
       this.EB_events = eventsRes;
