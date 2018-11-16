@@ -11,6 +11,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchEventsComponent } from './components/search-events/search-events.component';
 
+import { LoginService } from './services/login.service';
+
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 
@@ -49,8 +51,9 @@ export function provideConfig() {
   providers: [
     {
       provide: AuthServiceConfig,
-      useFactory: provideConfig
-    }
+      useFactory: provideConfig,
+    },
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
