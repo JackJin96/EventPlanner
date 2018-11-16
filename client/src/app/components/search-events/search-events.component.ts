@@ -47,17 +47,18 @@ export class SearchEventsComponent implements OnInit {
     this.http.get(`http://localhost:${port}/api/v1/events/EB`, {params: EB_headers})
     .subscribe( (data:any) => {
       console.log(typeof(data));
-      console.log(data.events);
+      console.log(data);
       const eventsRes = [];
-      Object.keys(data.events).forEach(key => {
-        eventsRes.push({ url: data.events[key].url,
-                         name: data.events[key].name,
-                         date: data.events[key].start.local.substring(0,10),
-                         description_text: (data.events[key].description.text &&
-                                          data.events[key].description.text.length > 500)?
-                                          data.events[key].description.text.substring(0, 500) :
-                                          data.events[key].description.text,
-                         website: "EventBrite" });
+      Object.keys(data).forEach(key => {
+        eventsRes.push({ url: data[key].url,
+                         name: data[key].name,
+                         date: data[key].start.local.substring(0,10),
+                         description_text: (data[key].description.text &&
+                                          data[key].description.text.length > 500)?
+                                          data[key].description.text.substring(0, 500) :
+                                          data[key].description.text,
+                         website: "EventBrite",
+                         img: data[key].logo ? data[key].logo.url : null });
       });
       console.log(eventsRes);
       this.EB_events = eventsRes;
@@ -81,13 +82,21 @@ export class SearchEventsComponent implements OnInit {
       console.log(data);
       const events = [];
       Object.keys(data).forEach(key => {
+        let imgurl = '';
+          Object.keys(data[key].images).forEach(imgkey => {
+            const image = data[key].images[imgkey]
+            if(image.ratio === '16_9' && image.width === 640) {
+                imgurl = image.url;
+            }
+          });
         events.push({ url: data[key].url,
                       name: data[key].name,
                       date: data[key].dates.start.localDate,
                       description_text: data[key].info ? ((data[key].info.length > 500)?
                                      data[key].info.substring(0, 500) :
                                      data[key].info): "",
-                      website: "TicketMaster" });
+                      website: "TicketMaster",
+                      img: imgurl });
       });
       console.log(events);
       this.TM_events = events;

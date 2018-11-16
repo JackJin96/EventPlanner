@@ -66,7 +66,9 @@
               <h3>{{i+1}}. {{ EB_event.name.text }}</h3></div>
               <div class = "panel-body">
               <p>Date: {{ EB_event.date }}</p>
-              <p>{{ EB_event.description_text }}</p>
+              <!-- <p>{{ EB_event.description_text }}</p> -->
+              <!-- <img [src]="EB_event.img" height="100em"/> -->
+              <div class="imgclass" [style.background-image]="'url(' + EB_event.img + ')'"></div>
               <p>Source: <label>{{ EB_event.website }}</label></p>
               <a href={{EB_event.url}} target="_blank">Event Link</a></div>
             </div>
@@ -80,7 +82,9 @@
               <h3>{{i+1}}. {{ TM_event.name }}</h3></div>
               <div class = "panel-body">
               <p>Date: {{ TM_event.date }}</p>
-              <p>{{ TM_event.description_text }}</p>
+              <!-- <p>{{ TM_event.description_text }}</p> -->
+              <!-- <img [src]="TM_event.img" height="100em"/> -->
+              <div class="imgclass" [style.background-image]="'url(' + TM_event.img + ')'"></div>
               <p>Source: <label>{{ TM_event.website }}</label></p>
               <a href={{TM_event.url}} target="_blank">Event Link</a></div>
             </div>

@@ -33,7 +33,6 @@ const getEventsEB = (req) => {
         request(EB_options, function (error, response, body) {
             if (error) throw new Error(error);
             jsonbody = JSON.parse(body);
-            console.log(Object.keys(jsonbody.events).length);
             resolve(jsonbody);
         });
     });
