@@ -10,7 +10,7 @@ export class LoginService {
 
   users = {}
   statusUpdated = new EventEmitter<string>();
-  isLoggedIn = false;
+  isLoggedIn;
 
   // addUser = (SocialUser) => {
   //   const email = SocialUser.email

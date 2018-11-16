@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoginService } from '../../services/login.service';
+import { AuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-navbar',
@@ -9,24 +10,32 @@ import { LoginService } from '../../services/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private loginService:LoginService) {
-    this.loginService.statusUpdated.subscribe(
-      (firstName: string) => {
-        console.log(firstName);
-        if(firstName !== null) {
-          this.isLoggedIn = true;
-          this.firstName = firstName;
-        } else {
-          this.isLoggedIn = false;
-        }
-      }
-    );
+  constructor(private authService: AuthService) {
+    // this.loginService.statusUpdated.subscribe(
+    //   (firstName: string) => {
+    //     console.log(firstName);
+    //     if(firstName !== null) {
+    //       this.isLoggedIn = true;
+    //       this.firstName = firstName;
+    //     } else {
+    //       this.isLoggedIn = false;
+    //     }
+    //   }
+    // );
    }
 
-  isLoggedIn: boolean;
-  firstName: string;
+   user: SocialUser;
+   isLoggedIn: boolean;
+   firstName: string;
 
   ngOnInit() {
+    this.authService.authState.subscribe(user => {
+      this.user = user;
+      this.isLoggedIn = (user !== null);
+      if (user) {
+        this.firstName = user.firstName;
+      }
+    });
   }
 
 }
