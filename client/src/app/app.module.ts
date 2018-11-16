@@ -15,6 +15,7 @@ import { LoginService } from './services/login.service';
 
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 let config = new AuthServiceConfig([
@@ -39,7 +40,8 @@ export function provideConfig() {
     NavbarComponent,
     AboutUsComponent,
     PageNotFoundComponent,
-    SearchEventsComponent
+    SearchEventsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
