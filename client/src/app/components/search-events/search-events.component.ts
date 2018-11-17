@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { _def } from '@angular/core/src/view/provider';
 
+import { Event } from '../../models/event.model';
+
 @Component({
   selector: 'app-search-events',
   templateUrl: './search-events.component.html',
@@ -46,14 +48,14 @@ export class SearchEventsComponent implements OnInit {
 
     this.http.get(`http://localhost:${port}/api/v1/events/EB`, {params: EB_headers})
     .subscribe( (data:any) => {
-      console.log(typeof(data));
-      console.log(data);
-      const eventsRes = [];
+      // console.log(typeof(data));
+      // console.log(data);
+      const eventsRes: Event[] = [];
       Object.keys(data).forEach(key => {
         eventsRes.push({ url: data[key].url,
-                         name: data[key].name,
+                         name: data[key].name.text,
                          date: data[key].start.local.substring(0,10),
-                         description_text: (data[key].description.text &&
+                         desc: (data[key].description.text &&
                                           data[key].description.text.length > 500)?
                                           data[key].description.text.substring(0, 500) :
                                           data[key].description.text,
@@ -78,9 +80,9 @@ export class SearchEventsComponent implements OnInit {
 
     this.http.get(`http://localhost:${port}/api/v1/events/TM`, {params: TM_headers})
     .subscribe(data => {
-      console.log(typeof(data));
-      console.log(data);
-      const events = [];
+      // console.log(typeof(data));
+      // console.log(data);
+      const events: Event[] = [];
       Object.keys(data).forEach(key => {
         let imgurl = '';
           Object.keys(data[key].images).forEach(imgkey => {
@@ -92,7 +94,7 @@ export class SearchEventsComponent implements OnInit {
         events.push({ url: data[key].url,
                       name: data[key].name,
                       date: data[key].dates.start.localDate,
-                      description_text: data[key].info ? ((data[key].info.length > 500)?
+                      desc: data[key].info ? ((data[key].info.length > 500)?
                                      data[key].info.substring(0, 500) :
                                      data[key].info): "",
                       website: "TicketMaster",
