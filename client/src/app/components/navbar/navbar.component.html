@@ -13,7 +13,7 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="">Home</a></li>
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a *ngIf="isLoggedIn" class="nav-link dropdown-toggle" href="profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 My Profile
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
