@@ -1,6 +1,8 @@
 const request = require("request");
 const bodyParser = require('body-parser');
 
+const config = require('../config');
+
 const getEventsEB = (req) => {
 
     // console.log(req.query);
@@ -15,9 +17,9 @@ const getEventsEB = (req) => {
     // console.log(start_date_range_end);
 
     const EB_options = { method: 'GET',
-    url: 'https://www.eventbriteapi.com/v3/events/search/',
+    url: config.app.EB.apiurl,
     qs:
-    { token: '3YT75UUCQUZWHOKXFDMZ',
+    { token: config.app.EB.token,
       'location.address': location_address,
       'location.within': location_within,
       'start_date.range_start': start_data_range_start,
@@ -25,7 +27,7 @@ const getEventsEB = (req) => {
     }
     ,
     headers:
-    { 'Postman-Token': '64de2995-6bb8-4c1e-b732-b630baaa97cb',
+    { 'Postman-Token': config.app.postman_token,
       'cache-control': 'no-cache' }
     };
 
@@ -47,9 +49,9 @@ const getEventsTM = (req) => {
     size = req.query['size'];
 
     const TM_options = { method: 'GET',
-        url: 'https://app.ticketmaster.com/discovery/v2/events',
+        url: config.app.TM.apiurl,
         qs:
-        { apikey: 'yvE2GqWdA8xBuDVumRZQedlmIL1z6mWi',
+        { apikey: config.app.TM.apikey,
         'city': city_name,
         'radius': radius,
         'startDateTime': start_data_range_start,
@@ -58,7 +60,7 @@ const getEventsTM = (req) => {
         }
         ,
         headers:
-        { 'Postman-Token': '64de2995-6bb8-4c1e-b732-b630baaa97cb',
+        { 'Postman-Token': config.postman_token,
         'cache-control': 'no-cache' }
     };
 
