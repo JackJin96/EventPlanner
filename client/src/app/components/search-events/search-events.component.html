@@ -63,14 +63,19 @@
           <div class = "panel-group">
             <div class = "panel panel-default"  *ngFor="let EB_event of EB_events; let i = index">
               <div class = "panel-heading">
-              <h3>{{i+1}}. {{ EB_event.name }}</h3></div>
+                <h3>{{i+1}}. {{ EB_event.name }}</h3>
+              </div>
               <div class = "panel-body">
-              <p>Date: {{ EB_event.date }}</p>
-              <!-- <p>{{ EB_event.description_text }}</p> -->
-              <!-- <img [src]="EB_event.img" height="100em"/> -->
-              <div class="imgclass" [style.background-image]="'url(' + EB_event.img + ')'"></div>
-              <p>Source: <label>{{ EB_event.website }}</label></p>
-              <a href={{EB_event.url}} target="_blank">Event Link</a></div>
+                <p>Date: {{ EB_event.date }}</p>
+                <!-- <p>{{ EB_event.description_text }}</p> -->
+                <!-- <img [src]="EB_event.img" height="100em"/> -->
+                <div class="imgclass" [style.background-image]="'url(' + EB_event.img + ')'"></div>
+                <div class="detailWrapper">
+                  <div class="source"><p>Source: <label>{{ EB_event.website }}</label></p></div>
+                  <div class="eventLink"><a href={{EB_event.url}} target="_blank">Event Link</a></div>
+                  <div class="interestedButton"><button (click)="clickInterested()">Interested</button></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -86,7 +91,8 @@
               <!-- <img [src]="TM_event.img" height="100em"/> -->
               <div class="imgclass" [style.background-image]="'url(' + TM_event.img + ')'"></div>
               <p>Source: <label>{{ TM_event.website }}</label></p>
-              <a href={{TM_event.url}} target="_blank">Event Link</a></div>
+              <a href={{TM_event.url}} target="_blank">Event Link</a>
+            </div>
             </div>
           </div>
         </div>

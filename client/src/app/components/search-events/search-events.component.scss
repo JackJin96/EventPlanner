@@ -26,4 +26,19 @@ body {
         background-position: center;
         min-height: 200px;
     }
+    .detailWrapper {
+        padding-top: 10px;
+        text-align: center;
+        vertical-align: baseline;
+        .source {
+            float: left;
+        }
+        .eventLink {
+            display: inline-block;
+            margin: 0 auto;
+        }
+        .interestedButton {
+            float: right;
+        }
+    }
 }

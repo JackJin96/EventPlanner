@@ -27,6 +27,7 @@ export class SearchEventsComponent implements OnInit {
   location_within = 10;
   EB_events = [];
   TM_events = [];
+  DEAULT_IMG_URL = "https://d1fofpanmqww7d.cloudfront.net/wp-content/uploads/2018/04/Events.jpg";
 
   submitted = false;
 
@@ -60,7 +61,7 @@ export class SearchEventsComponent implements OnInit {
                                           data[key].description.text.substring(0, 500) :
                                           data[key].description.text,
                          website: "EventBrite",
-                         img: data[key].logo ? data[key].logo.url : "" });
+                         img: data[key].logo ? data[key].logo.url : this.DEAULT_IMG_URL });
       });
       console.log(eventsRes);
       this.EB_events = eventsRes;
@@ -98,7 +99,7 @@ export class SearchEventsComponent implements OnInit {
                                      data[key].info.substring(0, 500) :
                                      data[key].info): "",
                       website: "TicketMaster",
-                      img: imgurl ? imgurl: "" });
+                      img: imgurl ? imgurl: this.DEAULT_IMG_URL });
       });
       console.log(events);
       this.TM_events = events;
@@ -119,4 +120,9 @@ export class SearchEventsComponent implements OnInit {
     console.log(this.display_end_date);
     this.getEvents(8000);
   }
+
+  // clickInterested(port){
+  //   this.http.post()
+  //   console.log('Interested!');
+  // }
 }

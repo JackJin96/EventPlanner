@@ -14,4 +14,8 @@ router.get('/events/TM', (req, res) => {
                 .then(data => res.send(data));
 });
 
+router.post('/users', (req, res) => {
+    console.log(req.body);
+    console.log('backend users post reached!');
+});
 module.exports = router;
