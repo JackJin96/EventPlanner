@@ -60,7 +60,7 @@ export class SearchEventsComponent implements OnInit {
                                           data[key].description.text.substring(0, 500) :
                                           data[key].description.text,
                          website: "EventBrite",
-                         img: data[key].logo ? data[key].logo.url : null });
+                         img: data[key].logo ? data[key].logo.url : "" });
       });
       console.log(eventsRes);
       this.EB_events = eventsRes;
@@ -98,7 +98,7 @@ export class SearchEventsComponent implements OnInit {
                                      data[key].info.substring(0, 500) :
                                      data[key].info): "",
                       website: "TicketMaster",
-                      img: imgurl });
+                      img: imgurl ? imgurl: "" });
       });
       console.log(events);
       this.TM_events = events;
