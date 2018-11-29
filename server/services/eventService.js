@@ -73,6 +73,12 @@ const getEventsTM = (req) => {
     });
 }
 
+const addInterestedEvent = (reqbody) => {
+    user_email = reqbody.user_email
+    event = reqbody.event
+    // use these info to add event to the user's interested event list
+}
+
 module.exports = {
     getEventsEB,
     getEventsTM

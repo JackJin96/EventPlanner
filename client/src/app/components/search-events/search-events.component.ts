@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { _def } from '@angular/core/src/view/provider';
 
+import { AuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
+
 import { Event } from '../../models/event.model';
 
 @Component({
@@ -12,9 +15,20 @@ import { Event } from '../../models/event.model';
 })
 export class SearchEventsComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private authService:AuthService) { }
+
+  user: SocialUser;
+  isLoggedIn: boolean;
+  user_email: string;
 
   ngOnInit() {
+    this.authService.authState.subscribe(user => {
+      this.user = user;
+      this.isLoggedIn = (user !== null);
+      if (user) {
+        this.user_email = user.email;
+      }
+    });
   }
 
   title = 'EventPlanner';
@@ -121,8 +135,19 @@ export class SearchEventsComponent implements OnInit {
     this.getEvents(8000);
   }
 
-  // clickInterested(port){
-  //   this.http.post()
-  //   console.log('Interested!');
-  // }
+  clickInterested(event){
+    if (this.isLoggedIn) {
+      this.http.post('http://localhost:8000/api/v1/events', {event: event, user_email: this.user_email})
+      .subscribe(response => {
+        console.log(response)
+      });
+      console.log('User:');
+      console.log(this.user_email);
+      console.log('Event interested: ');
+      console.log(event);
+    } else {
+      // can be 'beautified' by using some other UI alert library
+      alert('You are not logged in. Please log in to use this funtionality!');
+    }
+  }
 }

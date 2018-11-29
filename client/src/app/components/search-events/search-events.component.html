@@ -71,9 +71,9 @@
                 <!-- <img [src]="EB_event.img" height="100em"/> -->
                 <div class="imgclass" [style.background-image]="'url(' + EB_event.img + ')'"></div>
                 <div class="detailWrapper">
-                  <div class="source"><p>Source: <label>{{ EB_event.website }}</label></p></div>
+                  <div class="source"><p><label>{{ EB_event.website }}</label></p></div>
                   <div class="eventLink"><a href={{EB_event.url}} target="_blank">Event Link</a></div>
-                  <div class="interestedButton"><button (click)="clickInterested()">Interested</button></div>
+                  <div class="interestedButton"><button (click)="clickInterested(EB_event)">Interested</button></div>
                 </div>
               </div>
             </div>
@@ -90,8 +90,13 @@
               <!-- <p>{{ TM_event.description_text }}</p> -->
               <!-- <img [src]="TM_event.img" height="100em"/> -->
               <div class="imgclass" [style.background-image]="'url(' + TM_event.img + ')'"></div>
-              <p>Source: <label>{{ TM_event.website }}</label></p>
-              <a href={{TM_event.url}} target="_blank">Event Link</a>
+              <div class="detailWrapper">
+                <div class="source"><p><label>{{ TM_event.website }}</label></p></div>
+                <div class="eventLink"><a href={{TM_event.url}} target="_blank">Event Link</a></div>
+                <div class="interestedButton"><button (click)="clickInterested(TM_event)">Interested</button></div>
+              </div>
+              <!-- <p>Source: <label>{{ TM_event.website }}</label></p>
+              <a href={{TM_event.url}} target="_blank">Event Link</a> -->
             </div>
             </div>
           </div>

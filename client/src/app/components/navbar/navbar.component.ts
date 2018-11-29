@@ -10,19 +10,7 @@ import { SocialUser } from "angularx-social-login";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
-    // this.loginService.statusUpdated.subscribe(
-    //   (firstName: string) => {
-    //     console.log(firstName);
-    //     if(firstName !== null) {
-    //       this.isLoggedIn = true;
-    //       this.firstName = firstName;
-    //     } else {
-    //       this.isLoggedIn = false;
-    //     }
-    //   }
-    // );
-   }
+  constructor(private authService: AuthService) {}
 
    user: SocialUser;
    isLoggedIn: boolean;

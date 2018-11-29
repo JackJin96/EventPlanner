@@ -14,8 +14,9 @@ router.get('/events/TM', (req, res) => {
                 .then(data => res.send(data));
 });
 
-router.post('/users', (req, res) => {
-    console.log(req.body);
-    console.log('backend users post reached!');
+router.post('/events', (req, res) => {
+    eventService.addInterestedEvent(req.body)
+                .then(data => console.log(data));
+    res.send('123');
 });
 module.exports = router;
