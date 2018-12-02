@@ -136,8 +136,6 @@ export class SearchEventsComponent implements OnInit {
     }
     this.display_start_date = form.form.value.start_date;
     this.start_date = (form.form.value.start_date == "") ? "" : form.form.value.start_date + 'T00:00:00Z';
-    this.start_date_date = new Date(this.start_date);
-    
     this.display_end_date = form.form.value.end_date;
     this.end_date = (form.form.value.end_date == "") ? "" : form.form.value.end_date + 'T00:00:00Z';
     console.log(this.location);
