@@ -126,6 +126,9 @@ export class SearchEventsComponent implements OnInit {
     if( Number(date_str) == 0 ) {
     }
     else {
+      if(date_str.substring(4,5) !== '-' || date_str.substring(7,8) !== '-') {
+        alert('Please add "-" between the year, month, and day');
+      }
       if( Number(date_str.substring(0,4)) < 2018 ) {
         alert(Number(date_str.substring(0,4)) + " is a previous year.");
       }
