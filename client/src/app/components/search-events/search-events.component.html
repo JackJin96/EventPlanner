@@ -1,3 +1,5 @@
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-->
 <body>
     <div class="jumbotron text-center">
         <h1>EventPlanner</h1>
@@ -5,6 +7,10 @@
     </div>
     <div class="container">
       <div class="row">
+        <div class="w3-display-left w3-padding w3-col l6 m8">
+          <div class="w3-container w3-red">
+              <h3><span class="glyphicon glyphicon-calendar"></span><i class="fa fa-bed w3-margin-right"></i> Search Events</h3>
+            </div>
         <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="col-sm-6">
           <div>
             <label for="location"> Location: <br> </label>
@@ -24,7 +30,7 @@
             name="search_range"/>
             miles
           </div>
-  
+          
           <div>
             <label for="start_date"> Start Date: <br></label>
             <input type="text"
@@ -33,7 +39,6 @@
             ngModel
             name="start_date"/>
           </div>
-  
   
           <div>
             <label for="end_date"> End Date: <br> </label>
@@ -47,7 +52,9 @@
           <button type="submit"class="btn btn-default">
               <span class="glyphicon glyphicon-search"></span> Search </button>
         </form>
-  
+      </div>
+        
+        <!--
         <div class="col-sm-6">
           <div *ngIf="submitted">
           <h4>You have entered this:</h4>
@@ -57,10 +64,12 @@
           <p>End Date: {{ display_end_date }}</p>
           </div>
         </div>
+        -->
       </div>
+      
   
       <div class="row resultBox" *ngIf="submitted">
-        <h4>{{ location }} | {{ search_range }} miles | from {{ display_start_date}} to {{ display_end_date }}</h4>
+        <h4>{{ location }} | {{ search_range }} miles | from {{ display_start_date }} to {{ display_end_date }}</h4>
         <div class="col-sm-6">
           <h4>EventBrite Events:</h4>
           <div class = "panel-group">
@@ -74,8 +83,8 @@
                 <!-- <img [src]="EB_event.img" height="100em"/> -->
                 <div class="imgclass" [style.background-image]="'url(' + EB_event.img + ')'"></div>
                 <div class="detailWrapper">
-                  <div class="source"><p><label>{{ EB_event.website }}</label></p></div>
-                  <div class="eventLink"><a href={{EB_event.url}} target="_blank">Event Link</a></div>
+                  <!--<div class="source"><p><label>{{ EB_event.website }}</label></p></div>-->
+                  <div class="eventLink"><a href={{EB_event.url}} target="_blank">{{EB_event.name}}</a></div>
                   <div class="interestedButton"><button (click)="clickInterested(EB_event)">Interested</button></div>
                 </div>
               </div>

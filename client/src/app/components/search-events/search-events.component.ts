@@ -122,6 +122,7 @@ export class SearchEventsComponent implements OnInit {
   }
 
 
+  
   // MAKE SURE THE INPUTS ARE VALID, IF NOT THEN THROW
   onSubmit(form: NgForm){
     this.submitted = true;
@@ -130,9 +131,14 @@ export class SearchEventsComponent implements OnInit {
     if ( isNaN(Number(this.search_range)) ) {
       alert('Please enter a valid Search Range');
     }
+    if ( Number(this.search_range <= 0 || this.search_range > 50)) {
+      alert('Please enter a Search Range between 1 and 50')
+    }
     this.display_start_date = form.form.value.start_date;
     this.start_date = (form.form.value.start_date == "") ? "" : form.form.value.start_date + 'T00:00:00Z';
     this.start_date_date = new Date(this.start_date);
+    
+    alert(this.start_date_date);
     this.display_end_date = form.form.value.end_date;
     this.end_date = (form.form.value.end_date == "") ? "" : form.form.value.end_date + 'T00:00:00Z';
     console.log(this.location);

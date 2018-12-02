@@ -30,13 +30,26 @@ body {
         padding-top: 10px;
         text-align: center;
         vertical-align: baseline;
-        .source {
-            float: left;
-        }
-        .eventLink {
-            display: inline-block;
-            margin: 0 auto;
-        }
+    .source {
+        float: left;
+    }
+    .eventLink {
+        font-size: 1.7em;
+        font-weight: bold;
+        display: inline-block;
+        margin: 0 auto;
+    }
+    .eventLink :link{
+        color:black;
+    }
+    .eventLink :hover {
+        color: blue;
+    }
+    .eventLink :visited {
+        color: purple;
+    }
+
+
         .interestedButton {
             float: right;
         }
