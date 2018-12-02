@@ -7,6 +7,7 @@ import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 
 import { Event } from '../../models/event.model';
+import { start } from 'repl';
 
 @Component({
   selector: 'app-search-events',
@@ -122,12 +123,54 @@ export class SearchEventsComponent implements OnInit {
   }
 
 
+  checkDates(date_str) {
+    if( Number(date_str) == 0 ) {
+    }
+    else {
+      if( Number(date_str.substring(0,4)) < 2018 ) {
+        alert(Number(date_str.substring(0,4)) + " is a previous year.");
+      }
+      if( Number(date_str.substring(5,7)) <= 0 || Number(this.start_date.substring(5,7)) > 12 ) {
+        alert(date_str.substring(5,7) + " is not a valid month");
+      }
+      if( Number(date_str.substring(8,10)) > 0) {
+        switch(Number(date_str.substring(5,7))) {
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+            if( Number(date_str.substring(8,10)) > 31) {
+              alert("This day does not exist");
+            }
+            break;
+          case 2:
+            if( Number(date_str.substring(8,10)) > 29) {
+              alert("This day does not exist");
+            }
+            break;
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            if( Number(date_str.substring(8,10)) > 30) {
+              alert("This day does not exist");
+            }
+            break;
+        }
+      }
+    }
+  }
+
   
   // MAKE SURE THE INPUTS ARE VALID, IF NOT THEN THROW
   onSubmit(form: NgForm){
     this.submitted = true;
     this.location = form.form.value.location;
     this.search_range = (form.form.value.search_range == "") ? this.search_range : form.form.value.search_range
+
     if ( isNaN(Number(this.search_range)) ) {
       alert('Please enter a valid Search Range');
     }
@@ -136,8 +179,12 @@ export class SearchEventsComponent implements OnInit {
     }
     this.display_start_date = form.form.value.start_date;
     this.start_date = (form.form.value.start_date == "") ? "" : form.form.value.start_date + 'T00:00:00Z';
+    this.checkDates(this.start_date);
+
     this.display_end_date = form.form.value.end_date;
     this.end_date = (form.form.value.end_date == "") ? "" : form.form.value.end_date + 'T00:00:00Z';
+    this.checkDates(this.end_date);
+
     console.log(this.location);
     console.log(this.search_range);
     console.log(this.display_start_date);
