@@ -7,7 +7,6 @@ import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 
 import { Event } from '../../models/event.model';
-import { start } from 'repl';
 
 @Component({
   selector: 'app-search-events',
