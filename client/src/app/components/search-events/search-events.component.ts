@@ -36,9 +36,10 @@ export class SearchEventsComponent implements OnInit {
   location = "";
   start_date = "";
   display_start_date = "";
+  start_date_date = new Date();
   end_date = "";
   display_end_date = "";
-  location_within = 10;
+  search_range = 10;
   EB_events = [];
   TM_events = [];
   DEAULT_IMG_URL = "https://d1fofpanmqww7d.cloudfront.net/wp-content/uploads/2018/04/Events.jpg";
@@ -57,7 +58,7 @@ export class SearchEventsComponent implements OnInit {
           .set('Access-Control-Allow-Origin', '*')
           .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS')
           .set('location.address', this.location)
-          .set('location.within', this.location_within + 'mi')
+          .set('location.within', this.search_range + 'mi')
           .set('start_date.range_start', this.start_date)
           .set('start_date.range_end', this.end_date);
 
@@ -88,7 +89,7 @@ export class SearchEventsComponent implements OnInit {
           .set('Access-Control-Allow-Origin', '*')
           .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS')
           .set('location.address', this.location)
-          .set('location.within', this.location_within.toString())
+          .set('location.within', this.search_range.toString())
           .set('start_date.range_start', this.start_date)
           .set('start_date.range_end', this.end_date)
           .set('size', '50');
@@ -120,18 +121,25 @@ export class SearchEventsComponent implements OnInit {
     });
   }
 
+
+  // MAKE SURE THE INPUTS ARE VALID, IF NOT THEN THROW
   onSubmit(form: NgForm){
     this.submitted = true;
     this.location = form.form.value.location;
-    this.location_within = (form.form.value.search_range == "") ? this.location_within : form.form.value.search_range;
+    this.search_range = (form.form.value.search_range == "") ? this.search_range : form.form.value.search_range
+    if ( isNaN(Number(this.search_range)) ) {
+      alert('Please enter a valid Search Range');
+    }
     this.display_start_date = form.form.value.start_date;
     this.start_date = (form.form.value.start_date == "") ? "" : form.form.value.start_date + 'T00:00:00Z';
+    this.start_date_date = new Date(this.start_date);
     this.display_end_date = form.form.value.end_date;
     this.end_date = (form.form.value.end_date == "") ? "" : form.form.value.end_date + 'T00:00:00Z';
     console.log(this.location);
-    console.log(this.location_within);
+    console.log(this.search_range);
     console.log(this.display_start_date);
     console.log(this.display_end_date);
+
     this.getEvents(8000);
   }
 

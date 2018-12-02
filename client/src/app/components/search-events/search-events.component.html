@@ -26,18 +26,20 @@
           </div>
   
           <div>
-            <label for="start_date"> Start Date (YYYY-MM-DD): <br></label>
+            <label for="start_date"> Start Date: <br></label>
             <input type="text"
             id="StartDate"
+            placeholder="YYYY-MM-DD"
             ngModel
             name="start_date"/>
           </div>
   
   
           <div>
-            <label for="end_date"> End Date (YYYY-MM-DD): <br> </label>
+            <label for="end_date"> End Date: <br> </label>
             <input type="text"
             id="EndDate"
+            placeholder="YYYY-MM-DD"
             ngModel
             name="end_date"/>
           </div>
@@ -58,6 +60,7 @@
       </div>
   
       <div class="row resultBox" *ngIf="submitted">
+        <h4>{{ location }} | {{ search_range }} miles | from {{ display_start_date}} to {{ display_end_date }}</h4>
         <div class="col-sm-6">
           <h4>EventBrite Events:</h4>
           <div class = "panel-group">
