@@ -20,21 +20,8 @@ body {
         width: auto;
         max-height: 100%;
     }
-    .imgclass {
-        background-size: auto 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        min-height: 200px;
-    }
-    .detailWrapper {
-        padding-top: 10px;
-        text-align: center;
-        vertical-align: baseline;
-    .source {
-        float: left;
-    }
     .eventLink {
-        font-size: 1.7em;
+        font-size: 1.5em;
         font-weight: bold;
         display: inline-block;
         margin: 0 auto;
@@ -48,6 +35,23 @@ body {
     .eventLink :visited {
         color: purple;
     }
+    .interestedButton {
+        align-content: center;
+    }
+    .imgclass {
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 200px;
+    }
+    .detailWrapper {
+        padding-top: 10px;
+        text-align: center;
+        vertical-align: baseline;
+    .source {
+        float: left;
+    }
+
 
 
         .interestedButton {
