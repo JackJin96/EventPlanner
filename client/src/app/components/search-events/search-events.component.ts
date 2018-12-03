@@ -19,15 +19,11 @@ export class SearchEventsComponent implements OnInit {
 
   user: SocialUser;
   isLoggedIn: boolean;
-  user_email: string;
 
   ngOnInit() {
     this.authService.authState.subscribe(user => {
       this.user = user;
       this.isLoggedIn = (user !== null);
-      if (user) {
-        this.user_email = user.email;
-      }
     });
   }
 
@@ -208,12 +204,12 @@ export class SearchEventsComponent implements OnInit {
 
   clickInterested(event){
     if (this.isLoggedIn) {
-      this.http.post('http://localhost:8000/api/v1/events', {event: event, user_email: this.user_email})
+      this.http.post('http://localhost:8000/api/v1/events', {event: event, user: this.user})
       .subscribe(response => {
         console.log(response)
       });
       console.log('User:');
-      console.log(this.user_email);
+      console.log(this.user);
       console.log('Event interested: ');
       console.log(event);
     } else {

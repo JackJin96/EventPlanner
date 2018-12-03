@@ -1,7 +1,17 @@
 
 <script type="text/javascript">
-
-  </script>
+$(function(){
+    var $page = jQuery.url.attr("file");
+    $('ul.navigation li a').each(function(){
+        var $href = $(this).attr('href');
+        if ( ($href == $page) || ($href == '') ) {
+            $(this).addClass('on');
+        } else {
+            $(this).removeClass('on');
+        }
+    });
+});
+</script>
 
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
