@@ -118,6 +118,7 @@ export class SearchEventsComponent implements OnInit {
   }
 
 
+  /*
   checkDates(date_str) {
     if( Number(date_str) == 0 ) {
     }
@@ -161,6 +162,8 @@ export class SearchEventsComponent implements OnInit {
       }
     }
   }
+  */
+
 
   
   // MAKE SURE THE INPUTS ARE VALID, IF NOT THEN THROW
@@ -169,26 +172,34 @@ export class SearchEventsComponent implements OnInit {
     this.location = form.form.value.location;
     this.search_range = (form.form.value.search_range == "") ? this.search_range : form.form.value.search_range
 
-    if ( isNaN(Number(this.search_range)) ) {
-      alert('Please enter a valid Search Range');
-    }
-    if ( Number(this.search_range <= 0 || this.search_range > 50)) {
-      alert('Please enter a Search Range between 1 and 50')
-    }
+
+
     this.display_start_date = form.form.value.start_date;
     this.start_date = (form.form.value.start_date == "") ? "" : form.form.value.start_date + 'T00:00:00Z';
-    this.checkDates(this.start_date);
+    //this.checkDates(this.start_date);
 
     this.display_end_date = form.form.value.end_date;
     this.end_date = (form.form.value.end_date == "") ? "" : form.form.value.end_date + 'T00:00:00Z';
-    this.checkDates(this.end_date);
+    //this.checkDates(this.end_date);
 
     console.log(this.location);
     console.log(this.search_range);
     console.log(this.display_start_date);
     console.log(this.display_end_date);
 
-    this.getEvents(8000);
+    if ( isNaN(Number(this.search_range)) ) {
+      alert('Please enter a valid Search Range');
+    }
+    else if ( Number(this.search_range <= 0 || this.search_range > 50)) {
+      alert('Please enter a Search Range between 1 and 50')
+    }
+    else if (this.start_date > this.end_date) {
+      alert("Please make start date before end date");
+    }
+    else{
+      this.getEvents(8000);
+    }
+
   }
 
   clickInterested(event){

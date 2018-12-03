@@ -8,6 +8,9 @@ body {
         margin-left: 2%;
         margin-right: 2%;
     }
+    .searching {
+        padding: 1%;
+    }
     margin: 1%;
     .resultBox {
         margin-top: 5%;
@@ -19,6 +22,24 @@ body {
     .img {
         width: auto;
         max-height: 100%;
+    }
+    .eventLink {
+        font-size: 1.5em;
+        font-weight: bold;
+        display: inline-block;
+        margin: 0 auto;
+    }
+    .eventLink :link{
+        color:black;
+    }
+    .eventLink :hover {
+        color: blue;
+    }
+    .eventLink :visited {
+        color: purple;
+    }
+    .interestedButton {
+        align-content: center;
     }
     .imgclass {
         background-size: auto 100%;
@@ -33,21 +54,7 @@ body {
     .source {
         float: left;
     }
-    .eventLink {
-        font-size: 1.7em;
-        font-weight: bold;
-        display: inline-block;
-        margin: 0 auto;
-    }
-    .eventLink :link{
-        color:black;
-    }
-    .eventLink :hover {
-        color: blue;
-    }
-    .eventLink :visited {
-        color: purple;
-    }
+
 
 
         .interestedButton {
