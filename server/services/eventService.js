@@ -3,6 +3,11 @@ const bodyParser = require('body-parser');
 
 const config = require('../config');
 
+// MongoDB models:
+const userEventModels = require('../models/userEventModels');
+const EventModel = userEventModels.EventModel;
+const UserModel = userEventModels.UserModel;
+
 const getEventsEB = (req) => {
 
     // console.log(req.query);
@@ -74,12 +79,31 @@ const getEventsTM = (req) => {
 }
 
 const addInterestedEvent = (reqbody) => {
-    user_email = reqbody.user_email
+    user = reqbody.user
     event = reqbody.event
     // use these info to add event to the user's interested event list
+        console.log(reqbody);
+        return new Promise((resolve, reject) => {
+        UserModel.findOne({ email: user.email },  (err, data) => {
+            if (data) {
+                console.log('user Exists!');
+            } else {
+                const newuser = new UserModel({
+                    email: user.email,
+                    name: user.name,
+                    photoUrl: user.photoUrl,
+                    provider: user.provider,
+                    interestedEvents: []
+                });
+                newuser.save();
+                resolve(newuser);
+            }
+        });
+    });
 }
 
 module.exports = {
     getEventsEB,
-    getEventsTM
+    getEventsTM,
+    addInterestedEvent
 }

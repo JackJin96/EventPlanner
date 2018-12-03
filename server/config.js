@@ -10,6 +10,9 @@ const config = {
             apiurl: 'https://app.ticketmaster.com/discovery/v2/events',
             apikey: 'yvE2GqWdA8xBuDVumRZQedlmIL1z6mWi'
         }
+    },
+    db: {
+        mlabUrl : 'mongodb://user:411user@ds249583.mlab.com:49583/event_planner'
     }
 }
 

@@ -6,6 +6,10 @@ const restRouter = require('./routes/rest');
 
 const config = require('./config');
 
+// MongoDB connect
+const mongoose = require('mongoose');
+mongoose.connect(config.db.mlabUrl, { useNewUrlParser: true });
+
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
