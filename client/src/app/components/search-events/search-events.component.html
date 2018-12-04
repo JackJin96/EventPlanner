@@ -1,44 +1,50 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+
+
+
 <body>
   <div class="heading">
-    <div class="jumbotron text-center">
+    <div class="hello">
         <h1>EventPlanner</h1>
         <p>Much more than event search.</p>
     </div>
 
-    
     <div class="container">
-    <div class="searching">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
-      <div class="w3-row-padding">
-          <div class="w3-col m3" >
-            <label> Location</label>
-            <input class="w3-input w3-border" type="text" id="Location" ngModel name="location">
+      <div class="searching">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+        <div class="w3-row-padding">
+            <div class="w3-col m3" >
+              <label> Location</label>
+              <input class="w3-input w3-border" type="text" id="Location" ngModel name="location">
+            </div>
+            <div class="w3-col m3">
+              <label>Search Range</label>
+              <input class="w3-input w3-border" type="text" id="search_range" ngModel name="search_range">
+            </div>
+            <div class="w3-col m2">
+              <label>Start Date</label>
+              <input class="w3-input w3-border" type="date" id="StartDate" ngModel name="start_date">
+            </div>
+            <div class="w3-col m2">
+              <label>End Date</label>
+              <input class="w3-input w3-border" type="date" id="EndDate" ngModel name="end_date">
+            </div>
+            <div class="w3-col m2">
+              <label><i class="fa fa-search"></i> Search</label>
+              <button class="w3-button w3-block w3-black">
+                  <span class="glyphicon glyphicon-search"></span> Search</button>
+            </div>
           </div>
-          <div class="w3-col m3">
-            <label>Search Range</label>
-            <input class="w3-input w3-border" type="text" id="search_range" ngModel name="search_range">
-          </div>
-          <div class="w3-col m2">
-            <label>Start Date</label>
-            <input class="w3-input w3-border" type="date" id="StartDate" ngModel name="start_date">
-          </div>
-          <div class="w3-col m2">
-            <label>End Date</label>
-            <input class="w3-input w3-border" type="date" id="EndDate" ngModel name="end_date">
-          </div>
-          <div class="w3-col m2">
-            <label><i class="fa fa-search"></i> Search</label>
-            <button class="w3-button w3-block w3-black">
-                <span class="glyphicon glyphicon-search"></span> Search</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
+  </div>
+
+  
     
 
-      
+    <div class="container">
   
       <div class="row resultBox" *ngIf="submitted">
         <h4>{{ location }} | {{ search_range }} miles | from {{ display_start_date }} to {{ display_end_date }}</h4>
@@ -87,7 +93,7 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
-  </body>
+
+</body>
