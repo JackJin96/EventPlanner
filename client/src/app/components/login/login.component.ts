@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider} from "angularx-social-login";
@@ -11,7 +13,7 @@ import { FacebookLoginProvider, GoogleLoginProvider} from "angularx-social-login
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private http:HttpClient, private authService: AuthService) { }
 
   user: SocialUser;
   loggedIn: boolean;
@@ -28,6 +30,8 @@ export class LoginComponent implements OnInit {
     console.log('signin with google triggered!');
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(user => {
       console.log(user);
+      this.http.post('http://localhost:8000/api/v1/users', user)
+      .subscribe(res => console.log(res));
     });
   }
 
@@ -35,6 +39,8 @@ export class LoginComponent implements OnInit {
     console.log('signin with Facebook triggered!');
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(user => {
       console.log(user);
+      this.http.post('http://localhost:8000/api/v1/users', user)
+      .subscribe(res => console.log(res));
     });
   }
 

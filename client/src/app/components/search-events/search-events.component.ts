@@ -204,9 +204,9 @@ export class SearchEventsComponent implements OnInit {
 
   clickInterested(event){
     if (this.isLoggedIn) {
-      this.http.post('http://localhost:8000/api/v1/events', {event: event, user: this.user})
+      this.http.post('http://localhost:8000/api/v1/events', { event: event, user: this.user })
       .subscribe(response => {
-        console.log(response)
+        console.log(response);
       });
       console.log('User:');
       console.log(this.user);
