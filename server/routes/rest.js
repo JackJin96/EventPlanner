@@ -15,14 +15,17 @@ router.get('/events/TM', (req, res) => {
                 .then(data => res.send(data));
 });
 
-router.post('/events', (req, res) => {
-    eventService.addInterestedEvent(req.body)
-                .then(data => res.json(data));
-});
-
+// add a user upon log in
 router.post('/users', (req, res) => {
     userService.addUser(req.body)
                .then(data => res.json(data))
                .catch(err => res.json(err));
 });
+
+// add an event to user's interest list
+router.post('/events', (req, res) => {
+    userService.addInterestedEvent(req.body)
+                .then(data => res.json(data));
+});
+
 module.exports = router;
