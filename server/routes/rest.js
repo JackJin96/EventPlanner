@@ -31,9 +31,7 @@ router.post('/events', (req, res) => {
 // delete an event from user's interest list
 router.delete('/events', (req, res) => {
     userService.deleteInterestedEvent(req.body)
-               .then(data => {
-                   console.log(data);
-                    res.json(data);
-               });
+               .then(data => res.json(data));
 });
+
 module.exports = router;
