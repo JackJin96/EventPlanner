@@ -2,12 +2,14 @@ const bodyParser = require('body-parser');
 
 const userEventModels = require('../models/userEventModels');
 const UserModel = userEventModels.UserModel;
+const EventModel = userEventModels.EventModel;
 
+// add new user to the db upon log in
 const addUser = (user) => {
     return new Promise((resolve, reject) => {
         UserModel.findOne({ email: user.email },  (err, userdata) => {
             if (userdata) {
-                console.log('User already exists!');
+                resolve({ warning: 'User already exists!'})
             } else {
                 const newuser = new UserModel({
                     email: user.email,
@@ -23,24 +25,23 @@ const addUser = (user) => {
     });
 }
 
+// add an event to user's interest list when 'interested' button is clicked
 const addInterestedEvent = (reqbody) => {
     user = reqbody.user
     event = reqbody.event
     // use these info to add event to the user's interested event list
-    console.log(reqbody);
     return new Promise((resolve, reject) => {
         UserModel.findOne({ email: user.email },  (err, userdata) => {
             if (userdata) {
                 let eventInList = false;
                 userdata.interestedEvents.forEach((oldEvent) => {
                     if (oldEvent.url == event.url) {
-                        console.log('event already added!');
                         eventInList = true;
                     }
                 });
                 if (eventInList === false) {
                     userdata.interestedEvents.push(event);
-                    userdata.save().then(res => console.log(res));
+                    userdata.save();
                     resolve(event);
                 } else {
                     resolve({ warning:'Event is already in your interest list.' });
@@ -52,7 +53,30 @@ const addInterestedEvent = (reqbody) => {
     });
 }
 
+// remove an event from user's interest list when 'remove' button is clicked
+const deleteInterestedEvent = (reqbody) => {
+    user = reqbody.user
+    event = reqbody.event
+    return new Promise((resolve, reject) => {
+        UserModel.findOne({ email: user.email },  (err, userdata) => {
+            if (userdata) {
+                userdata.interestedEvents.forEach((oldEvent) => {
+                    if (oldEvent.url === event.url) {
+                        console.log('event found!');
+                        oldEvent.remove();
+                        userdata.save();
+                        resolve(event);
+                    }
+                });
+            } else {
+                resolve(err);
+            }
+        });
+    });
+};
+
 module.exports = {
     addUser,
-    addInterestedEvent
+    addInterestedEvent,
+    deleteInterestedEvent
 }
