@@ -12,22 +12,22 @@ Run `npm install` for both front end (client folder) and backend (server folder)
 Run `./launcher.sh`.
 (That's it! It will take care of npm install and npm start all at once)
 
-OR
+**OR**
 
 Run `ng build --prod` for frontend (client).
 After build finishes, run `npm start` or `nodemon server.js` for backend (server).
 
-NOTE: Applicaiton is now running at `localhost:8000` ( for both client and server).
+*NOTE: Applicaiton is now running at `localhost:8000` ( for both client and server).*
 
 ### Old (no longer used)
 Run `ng serve` for frontend server.
 Run `nodemon server.js` for backend node server.
 
-OR
+**OR**
 
 Now you can run `npm start` for both front end and back end.
 
-NOTE: Application runs at `localhost:4200` for client and `localhost:8000` for server.
+*NOTE: Application runs at `localhost:4200` for client and `localhost:8000` for server.*
 
 # System generated content (ignore)
 ## Angular 7
