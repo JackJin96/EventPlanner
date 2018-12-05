@@ -3,12 +3,26 @@
 }
 body {
     padding-top: 70px;
-    .jumbotron.text-center {
-        padding: 1%;
+    .heading{
+        padding: 2%;
+        background-color: #a8a8a8;
         margin-left: 2%;
         margin-right: 2%;
     }
+    .hello {
+        padding: 1%;
+        margin-left: 2%;
+        margin-right: 2%;
+        text-align: center;
+    }
+    .hello h1 {
+        font-size: 45pt;
+    }
+    .hello p {
+        font-size:18pt;
+    }
     .searching {
+        margin-top: 3%;
         padding: 1%;
     }
     margin: 1%;
