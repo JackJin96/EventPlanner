@@ -15,6 +15,12 @@ router.get('/events/TM', (req, res) => {
                 .then(data => res.send(data));
 });
 
+// get events in user's interest list
+router.get('/user/events', (req, res) => {
+    userService.getInterestedEvents(req)
+               .then(data => res.json(data));
+});
+
 // add a user upon log in
 router.post('/users', (req, res) => {
     userService.addUser(req.body)

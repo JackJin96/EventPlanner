@@ -9,7 +9,7 @@ const addUser = (user) => {
     return new Promise((resolve, reject) => {
         UserModel.findOne({ email: user.email },  (err, userdata) => {
             if (userdata) {
-                resolve({ warning: 'User already exists!'})
+                resolve({ warning: 'User already exists!'});
             } else {
                 const newuser = new UserModel({
                     email: user.email,
@@ -20,6 +20,20 @@ const addUser = (user) => {
                 });
                 newuser.save();
                 resolve(newuser);
+            }
+        });
+    });
+}
+
+// get all events in user's interest list
+const getInterestedEvents = (req) => {
+    user_email = req.query['user_email'];
+    return new Promise((resolve, reject) => {
+        UserModel.findOne({ email: user_email },  (err, userdata) => {
+            if (userdata) {
+                resolve(userdata.interestedEvents);
+            } else {
+                resolve({ warning: 'User already exists!'});
             }
         });
     });
@@ -78,5 +92,6 @@ const deleteInterestedEvent = (reqbody) => {
 module.exports = {
     addUser,
     addInterestedEvent,
-    deleteInterestedEvent
+    deleteInterestedEvent,
+    getInterestedEvents
 }

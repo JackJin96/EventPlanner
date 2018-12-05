@@ -47,18 +47,21 @@ export class SearchEventsComponent implements OnInit {
   }
 
   getEvents(port) {
-    const EB_headers = new HttpParams()
+    const EB_headers = new HttpHeaders()
           // .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json')
           .set('Access-Control-Allow-Headers', 'Content-Type')
           .set('Access-Control-Allow-Origin', '*')
-          .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS')
+          .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS');
+
+    const EB_params = new HttpParams()
           .set('location.address', this.location)
           .set('location.within', this.search_range + 'mi')
           .set('start_date.range_start', this.start_date)
           .set('start_date.range_end', this.end_date);
 
-    this.http.get(`http://localhost:${port}/api/v1/events/EB`, {params: EB_headers})
+    this.http.get(`http://localhost:${port}/api/v1/events/EB`,
+                {headers: EB_headers, params: EB_params})
     .subscribe( (data:any) => {
       // console.log(typeof(data));
       // console.log(data);
@@ -78,19 +81,22 @@ export class SearchEventsComponent implements OnInit {
       this.EB_events = eventsRes;
     });
 
-    const TM_headers = new HttpParams()
+    const TM_headers = new HttpHeaders()
           // .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json')
           .set('Access-Control-Allow-Headers', 'Content-Type')
           .set('Access-Control-Allow-Origin', '*')
-          .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS')
+          .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS');
+
+    const TM_params = new HttpParams()
           .set('location.address', this.location)
           .set('location.within', this.search_range.toString())
           .set('start_date.range_start', this.start_date)
           .set('start_date.range_end', this.end_date)
           .set('size', '50');
 
-    this.http.get(`http://localhost:${port}/api/v1/events/TM`, {params: TM_headers})
+    this.http.get(`http://localhost:${port}/api/v1/events/TM`,
+                  {headers: TM_headers, params: TM_params})
     .subscribe(data => {
       // console.log(typeof(data));
       // console.log(data);
