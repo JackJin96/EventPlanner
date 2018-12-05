@@ -15,27 +15,29 @@
     <div class="container">
       <div class="searching">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
-        <div class="w3-row-padding">
-            <div class="w3-col m3" >
+        <div class="row">
+            <div class="col-sm-3" >
               <label> Location</label>
               <input class="w3-input w3-border" type="text" id="Location" ngModel name="location">
             </div>
-            <div class="w3-col m3">
-              <label>Search Range</label>
+            <div class="col-sm-1">
+              <label>Range</label>
               <input class="w3-input w3-border" type="text" id="search_range" ngModel name="search_range">
             </div>
-            <div class="w3-col m2">
+            <div class="col-sm-3">
               <label>Start Date</label>
               <input class="w3-input w3-border" type="date" id="StartDate" ngModel name="start_date">
             </div>
-            <div class="w3-col m2">
+            <div class="col-sm-3">
               <label>End Date</label>
               <input class="w3-input w3-border" type="date" id="EndDate" ngModel name="end_date">
             </div>
-            <div class="w3-col m2">
+            <div class="col-sm-2">
               <label><i class="fa fa-search"></i> Search</label>
-              <button class="w3-button w3-block w3-black">
-                  <span class="glyphicon glyphicon-search"></span> Search</button>
+                <button class="w3-button w3-block w3-black">
+                  <span class="glyphicon glyphicon-search"></span>
+                  Search
+                </button>
             </div>
           </div>
         </form>

@@ -5,7 +5,7 @@ body {
     padding-top: 70px;
     .heading{
         padding: 2%;
-        background-color: #a8a8a8;
+        background-color: #d8d8d8;
         margin-left: 2%;
         margin-right: 2%;
     }
@@ -24,6 +24,7 @@ body {
     .searching {
         margin-top: 3%;
         padding: 1%;
+        padding-right: 5%;
     }
     margin: 1%;
     .resultBox {
@@ -69,5 +70,8 @@ body {
         .interestedButton {
             float: right;
         }
+    }
+    .glyphicon{
+        // width: 0.5em !important;
     }
 }
