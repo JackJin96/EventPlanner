@@ -210,14 +210,11 @@ export class SearchEventsComponent implements OnInit {
 
   clickInterested(event){
     if (this.isLoggedIn) {
-      this.http.post('http://localhost:8000/api/v1/events', { event: event, user: this.user })
-      .subscribe(response => {
-        console.log(response);
+      this.http.post('http://localhost:8000/api/v1/user/event', { event: event, user: this.user })
+      .subscribe(eventPosted => {
+        console.log(eventPosted);
+        alert('You have added: \n\n' + eventPosted['name'] + '\n\n to your profile!');
       });
-      console.log('User:');
-      console.log(this.user);
-      console.log('Event interested: ');
-      console.log(event);
     } else {
       // can be 'beautified' by using some other UI alert library
       alert('You are not logged in. Please log in to use this funtionality!');

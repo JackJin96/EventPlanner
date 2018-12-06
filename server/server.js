@@ -20,14 +20,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, '../public')));
-app.use('/', indexRouter);
+// app.use(express.static(path.join(__dirname, '../public')));
+// app.use('/', indexRouter);
 app.use('/api/v1', restRouter);
 
-app.use((req, res) => {
-  res.sendFile('index.html', {root: path.join(__dirname, '../public')});
-})
+// app.use((req, res) => {
+//   res.sendFile('index.html', {root: path.join(__dirname, '../public')});
+// });
 
 app.listen(config.app.port, () => {
-    console.log('Server started at port: ' + config.app.port + '!');
-  });
+  console.log('Server started at port: ' + config.app.port + '!');
+});

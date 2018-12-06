@@ -14,7 +14,7 @@
                     <p>Date: {{ user_event.date }}</p>
                     <div class="imgclass" [style.background-image]="'url(' + user_event.img + ')'"></div>
                     <br>
-                    <div class="deleteButton"><button (click)="deleteEvent()">Delete Event</button></div>
+                    <div class="deleteButton"><button (click)="deleteEvent(user_event)">Delete Event</button></div>
                 </div>
             </div>
         </div>

@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import * as _ from 'lodash';
+
+import { Event } from '../../models/event.model';
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +31,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  events: Array<Object> = [];
+  events: Array<Event> = [];
 
   getInterestedEvents = () => {
     const getHeaders = new HttpHeaders()
@@ -48,12 +51,28 @@ export class ProfileComponent implements OnInit {
           this.events.push(events[key]);
         }
       }
-      console.log(this.events);
     });
   }
 
-  deleteEvent = () => {
+  deleteEvent = (event) => {
     // complete the http delete request
     // backend delete endpoint is already working
+    const deleteHeaders = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Access-Control-Allow-Headers', 'Content-Type')
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS');
+
+    const deleteParams = new HttpParams()
+      .set('user_email', this.user.email)
+      .set('event_url', event.url);
+
+    this.http.delete('http://localhost:8000/api/v1/user/event',
+                  {headers: deleteHeaders, params: deleteParams})
+    .subscribe(eventToDelete => {
+      const eventDeleted = _.remove(this.events, (e) => e.url === eventToDelete['url']);
+      alert('You have successfully removed \n\n' + eventDeleted[0]['name'] + '\n\n from your profile!');
+    });
+
   }
 }

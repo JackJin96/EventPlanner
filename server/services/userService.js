@@ -68,18 +68,21 @@ const addInterestedEvent = (reqbody) => {
 }
 
 // remove an event from user's interest list when 'remove' button is clicked
-const deleteInterestedEvent = (reqbody) => {
-    user = reqbody.user
-    event = reqbody.event
+const deleteInterestedEvent = (req) => {
+    user_email = req.query['user_email'];
+    event_url = req.query['event_url'];
+    console.log('user email: ' + user_email);
+    console.log('event_url: ' + event_url);
     return new Promise((resolve, reject) => {
-        UserModel.findOne({ email: user.email },  (err, userdata) => {
+        UserModel.findOne({ email: user_email },  (err, userdata) => {
             if (userdata) {
                 userdata.interestedEvents.forEach((oldEvent) => {
-                    if (oldEvent.url === event.url) {
+                    if (oldEvent.url === event_url) {
                         console.log('event found!');
+                        const deletedEvent = oldEvent;
                         oldEvent.remove();
                         userdata.save();
-                        resolve(event);
+                        resolve(deletedEvent);
                     }
                 });
             } else {

@@ -8,7 +8,7 @@ Run `npm install` for both front end (client folder) and backend (server folder)
 
 ## Runing the project
 
-### __New (can be used for final deployment)__
+### New (can be used for final deployment)
 Run `./launcher.sh`.
 (That's it! It will take care of npm install and npm start all at once)
 

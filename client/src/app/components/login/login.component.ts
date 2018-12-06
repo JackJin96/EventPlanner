@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     console.log('signin with google triggered!');
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(user => {
       console.log(user);
-      this.http.post('http://localhost:8000/api/v1/users', user)
+      this.http.post('http://localhost:8000/api/v1/user', user)
       .subscribe(res => console.log(res));
     });
   }
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     console.log('signin with Facebook triggered!');
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(user => {
       console.log(user);
-      this.http.post('http://localhost:8000/api/v1/users', user)
+      this.http.post('http://localhost:8000/api/v1/user', user)
       .subscribe(res => console.log(res));
     });
   }

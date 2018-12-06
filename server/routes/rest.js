@@ -22,21 +22,21 @@ router.get('/user/events', (req, res) => {
 });
 
 // add a user upon log in
-router.post('/users', (req, res) => {
+router.post('/user', (req, res) => {
     userService.addUser(req.body)
                .then(data => res.json(data))
                .catch(err => res.json(err));
 });
 
 // add an event to user's interest list
-router.post('/events', (req, res) => {
+router.post('/user/event', (req, res) => {
     userService.addInterestedEvent(req.body)
                 .then(data => res.json(data));
 });
 
 // delete an event from user's interest list
-router.delete('/events', (req, res) => {
-    userService.deleteInterestedEvent(req.body)
+router.delete('/user/event', (req, res) => {
+    userService.deleteInterestedEvent(req)
                .then(data => res.json(data));
 });
 
