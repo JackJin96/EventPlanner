@@ -46,34 +46,66 @@
   </div>
 
   
+
     
 
+
     <div class="container">
-  
-      <div class="row resultBox" *ngIf="submitted">
-        <h4>{{ location }} | {{ search_range }} miles | from {{ display_start_date }} to {{ display_end_date }}</h4>
+        <div class="row resultBox" *ngIf="submitted">
+
+            <h4>{{ location }} | {{ search_range }} miles | from {{ display_start_date }} to {{ display_end_date }}</h4>
+
+            <div class="col-md-4 col-sm-2" *ngFor= "let EB_event of EB_events; let i = index">
+
+              
+                <div class="hovereffect">
+                    <img class="img-responsive" [src]="EB_event.img" alt=""> 
+                    <div class="overlay">
+                       <h2>{{ EB_event.name}} </h2>
+                       <p>{{EB_event.date}} @ location</p>
+                       <a class="info" href="{{EB_event.url}}" target="_blank">link here</a>
+                    </div>
+                </div>
+            </div>
+
+
+          
+
+
+
+
+
+        <!---
         <div class="col-sm-6">
           <h4>EventBrite Events:</h4>
+
+
+
           <div class = "panel-group">
             <div class = "panel panel-default"  *ngFor="let EB_event of EB_events; let i = index">
                   <div class="panel-heading">
                     <h3>{{i+1}}. <a class="eventLink" href={{EB_event.url}} target="_blank">{{EB_event.name}}</a></h3>
                   </div>
               <div class = "panel-body">
-                  <p>Date: {{ EB_event.date }}</p>
-                <!-- <p>{{ EB_event.description_text }}</p> -->
-                <!-- <img [src]="EB_event.img" height="100em"/> -->
+                  <p>Date: {{ EB_event.date }}</p> 
+                <p>{{ EB_event.description_text }}</p> 
+                 <img [src]="EB_event.img" height="100em"/> 
+
+
+
                 <div class="imgclass" [style.background-image]="'url(' + EB_event.img + ')'"></div>
-                <br>
-                <!---<div class="detailWrapper">--->
-                  <!--<div class="source"><p><label>{{ EB_event.website }}</label></p></div>-->
-                  <!---<div class="eventLink"><a href={{EB_event.url}} target="_blank">{{EB_event.name}}</a></div> --->
-                  <div class="interestedButton"><button (click)="clickInterested(EB_event)">Interested</button></div>
-                <!--</div>--->
+                
+                <br> 
+                <div class="detailWrapper">
+                  <div class="source"><p><label>{{ EB_event.website }}</label></p></div>
+                  <div class="eventLink"><a href={{EB_event.url}} target="_blank">{{EB_event.name}}</a></div>
+                 <div class="interestedButton"><button (click)="clickInterested(EB_event)">Interested</button></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      
         <div class="col-sm-6">
           <h4>TicketMaster Events:</h4>
           <div class = "panel-group">
@@ -81,21 +113,25 @@
               <div class = "panel-heading">
               <h3>{{i+1}}. {{ TM_event.name }}</h3></div>
               <div class = "panel-body">
-              <p>Date: {{ TM_event.date }}</p>
-              <!-- <p>{{ TM_event.description_text }}</p> -->
-              <!-- <img [src]="TM_event.img" height="100em"/> -->
+              <p>Date: {{ TM_event.date }}</p> 
+              <p>{{ TM_event.description_text }}</p>
+              <img [src]="TM_event.img" height="100em"/>
+              
               <div class="imgclass" [style.background-image]="'url(' + TM_event.img + ')'"></div>
               <div class="detailWrapper">
                 <div class="source"><p><label>{{ TM_event.website }}</label></p></div>
                 <div class="eventLink"><a href={{TM_event.url}} target="_blank">Event Link</a></div>
                 <div class="interestedButton"><button (click)="clickInterested(TM_event)">Interested</button></div>
-              </div>
-              <!-- <p>Source: <label>{{ TM_event.website }}</label></p>
-              <a href={{TM_event.url}} target="_blank">Event Link</a> -->
+              </div> 
+              <p>Source: <label>{{ TM_event.website }}</label></p>
+              <a href={{TM_event.url}} target="_blank">Event Link</a> 
+              <
             </div>
             </div>
           </div>
-        </div>
+        
+        </div> 
+      -->
     </div>
   </div>
 
