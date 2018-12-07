@@ -124,6 +124,52 @@ export class SearchEventsComponent implements OnInit {
   }
 
 
+  /*
+  checkDates(date_str) {
+    if( Number(date_str) == 0 ) {
+    }
+    else {
+      if(date_str.substring(4,5) !== '-' || date_str.substring(7,8) !== '-') {
+        alert('Please add "-" between the year, month, and day');
+      }
+      if( Number(date_str.substring(0,4)) < 2018 ) {
+        alert(Number(date_str.substring(0,4)) + " is a previous year.");
+      }
+      if( Number(date_str.substring(5,7)) <= 0 || Number(this.start_date.substring(5,7)) > 12 ) {
+        alert(date_str.substring(5,7) + " is not a valid month");
+      }
+      if( Number(date_str.substring(8,10)) > 0) {
+        switch(Number(date_str.substring(5,7))) {
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+            if( Number(date_str.substring(8,10)) > 31) {
+              alert("This day does not exist");
+            }
+            break;
+          case 2:
+            if( Number(date_str.substring(8,10)) > 29) {
+              alert("This day does not exist");
+            }
+            break;
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            if( Number(date_str.substring(8,10)) > 30) {
+              alert("This day does not exist");
+            }
+            break;
+        }
+      }
+    }
+  }
+  */
+
 
   
   // MAKE SURE THE INPUTS ARE VALID, IF NOT THEN THROW
