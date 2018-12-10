@@ -27,16 +27,17 @@ $(function(){
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li><a href="">Home</a></li>
-          <li class="nav-item dropdown">
+          <li><a *ngIf="isLoggedIn" href="profile">My Profile</a></li>
+          <!-- <li class="nav-item dropdown">
               <a *ngIf="isLoggedIn" class="nav-link dropdown-toggle" href="profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 My Profile
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="profile">Events</a>
-                <!-- <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="profile">Calendar</a> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="profile">Calendar</a>
               </div>
-          </li>
+          </li> -->
           <li><a href="about">About Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
