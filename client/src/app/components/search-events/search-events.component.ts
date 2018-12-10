@@ -61,13 +61,42 @@ export class SearchEventsComponent implements OnInit {
           .set('Access-Control-Allow-Origin', '*')
           .set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,PUT,OPTIONS');
 
+    // get cache (last searched results)
     this.http.get('http://localhost:8000/api/v1/events/cache', {headers:cache_headers})
              .subscribe(data => {
-                console.log(data);
-                this.EB_events = data['EB'];
-                this.TM_events = data['TM'];
-                console.log(this.EB_events);
-                console.log(this.TM_events);
+                if (data) {
+                  // EB:
+                  Object.keys(data['EB']).forEach(key => {
+                    this.EB_events.push({ url: data['EB'][key].url,
+                                     name: data['EB'][key].name.text,
+                                     date: data['EB'][key].start.local.substring(0,10),
+                                     desc: (data['EB'][key].description.text &&
+                                                      data['EB'][key].description.text.length > 500)?
+                                                      data['EB'][key].description.text.substring(0, 500) :
+                                                      data['EB'][key].description.text,
+                                     website: "EventBrite",
+                                     img: data['EB'][key].logo ? data['EB'][key].logo.url : this.DEAULT_IMG_URL });
+                  });
+                  //TM:
+                  Object.keys(data['TM']).forEach(key => {
+                    let imgurl = '';
+                      Object.keys(data['TM'][key].images).forEach(imgkey => {
+                        const image = data['TM'][key].images[imgkey]
+                        if(image.ratio === '16_9' && image.width === 640) {
+                            imgurl = image.url;
+                        }
+                      });
+                    this.TM_events.push({ url: data['TM'][key].url,
+                                  name: data['TM'][key].name,
+                                  date: data['TM'][key].dates.start.localDate,
+                                  desc: data['TM'][key].info ? ((data['TM'][key].info.length > 500)?
+                                                 data['TM'][key].info.substring(0, 500) :
+                                                 data['TM'][key].info): "",
+                                  website: "TicketMaster",
+                                  img: imgurl ? imgurl: this.DEAULT_IMG_URL });
+                  });
+                  this.submitted = true;
+                }
              });
   }
 
@@ -92,8 +121,6 @@ export class SearchEventsComponent implements OnInit {
     this.http.get(`http://localhost:${port}/api/v1/events/EB`,
                 {headers: EB_headers, params: EB_params})
     .subscribe( (data:any) => {
-      // console.log(typeof(data));
-      // console.log(data);
       const eventsRes: Event[] = [];
       Object.keys(data).forEach(key => {
         eventsRes.push({ url: data[key].url,
@@ -106,7 +133,6 @@ export class SearchEventsComponent implements OnInit {
                          website: "EventBrite",
                          img: data[key].logo ? data[key].logo.url : this.DEAULT_IMG_URL });
       });
-      console.log(eventsRes);
       this.EB_events = eventsRes;
     });
 
@@ -127,8 +153,6 @@ export class SearchEventsComponent implements OnInit {
     this.http.get(`http://localhost:${port}/api/v1/events/TM`,
                   {headers: TM_headers, params: TM_params})
     .subscribe(data => {
-      // console.log(typeof(data));
-      // console.log(data);
       const events: Event[] = [];
       Object.keys(data).forEach(key => {
         let imgurl = '';
@@ -147,7 +171,6 @@ export class SearchEventsComponent implements OnInit {
                       website: "TicketMaster",
                       img: imgurl ? imgurl: this.DEAULT_IMG_URL });
       });
-      console.log(events);
       this.TM_events = events;
     });
   }
@@ -156,7 +179,6 @@ export class SearchEventsComponent implements OnInit {
     if (this.isLoggedIn) {
       this.http.post('http://localhost:8000/api/v1/user/event', { event: event, user: this.user })
       .subscribe(eventPosted => {
-        console.log(eventPosted);
         alert('You have added: \n\n' + eventPosted['name'] + '\n\n to your profile!');
       });
     } else {
@@ -226,11 +248,6 @@ export class SearchEventsComponent implements OnInit {
     this.display_end_date = form.form.value.end_date;
     this.end_date = (form.form.value.end_date == "") ? "" : form.form.value.end_date + 'T00:00:00Z';
     //this.checkDates(this.end_date);
-
-    console.log(this.location);
-    console.log(this.search_range);
-    console.log(this.display_start_date);
-    console.log(this.display_end_date);
 
     if ( isNaN(Number(this.search_range)) ) {
       alert('Please enter a valid Search Range');

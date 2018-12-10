@@ -13,24 +13,20 @@ const EventModel = userEventModels.EventModel;
 const UserModel = userEventModels.UserModel;
 
 const getCachedEvents = () => {
-    console.log('\ngetCahcedEvents!\n');
     cachedEvents = {}
     return new Promise((resolve, reject) => {
         redisClient.get('cachedEvents/EB', data => {
-            console.log('get EB cache!');
             if (data) {
                 cachedEvents.EB = JSON.parse(data)['events'];
             }
         });
         redisClient.get('cachedEvents/TM', data => {
-            console.log('get TM cache!');
             if (data) {
-                cachedEvents.TM = JSON.parse(data)['_embedded']['events'];
+                cachedEvents.TM = JSON.parse(data);
             }
         });
         // could be a better way to resolve async function calls
         setTimeout(() => {
-            console.log('resolve!');
             resolve(cachedEvents);
         }, 500);
     });
@@ -68,7 +64,7 @@ const getEventsEB = (req) => {
                 request(EB_options, function (error, response, body) {
                     if (error) throw new Error(error);
                     redisClient.set(key, body, redisClient.redisPrint);
-                    redisClient.set(key_cache, body, () => console.log('set EB cache!'));
+                    redisClient.set(key_cache, body, redisPrint);
                     redisClient.expire(key, TIMEOUT_IN_SECONDS);
                     jsonbody = JSON.parse(body);
                     resolve(jsonbody);
@@ -111,11 +107,12 @@ const getEventsTM = (req) => {
             } else {
                 request(TM_options, function (error, response, body) {
                     if (error) throw new Error(error);
-                    redisClient.set(key, body, redisClient.redisPrint);
-                    redisClient.set(key_cache, body, () => console.log('set TM cache!'));
-                    redisClient.expire(key, TIMEOUT_IN_SECONDS);
                     jsonbody = JSON.parse(body);
-                    resolve(jsonbody._embedded.events);
+                    jsonevents = jsonbody._embedded.events;
+                    redisClient.set(key, JSON.stringify(jsonevents), redisClient.redisPrint);
+                    redisClient.set(key_cache, JSON.stringify(jsonevents), redisClient.redisPrint);
+                    redisClient.expire(key, TIMEOUT_IN_SECONDS);
+                    resolve(jsonevents);
                 });
             }
         });
