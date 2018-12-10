@@ -1,13 +1,27 @@
+body {
+    min-height: 800px;
+    color: white;
+    background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/PDaTSuJ/videoblocks-vj-light-event-concert-dance-music-videos-stage-party-abstract-led-neon-tunnel-background-loop_hcdco4o8m_thumbnail-full01.png');
+    background-repeat: repeat-y;
+}
+
 .container {
-    margin-top: 8%;
+    padding-top: 8%;
 }
 .profile-img {
     text-align: center;
 }
+.panel-default {
+    .panel-heading {
+        background-color: #3f4144;
+    }
+    background-color: black;
+}
 .panel {
     text-align: center;
-    height: 30em;
+    height: 32em;
 }
+
 .img {
     width: auto;
     max-height: 100%;
@@ -17,4 +31,14 @@
     background-repeat: no-repeat;
     background-position: center;
     min-height: 200px;
+}
+button {
+    background-color: black;
+}
+h3 {
+    color: white;
+}
+.eventLink {
+    text-decoration: none;
+    color: white;
 }
