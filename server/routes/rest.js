@@ -15,6 +15,12 @@ router.get('/events/TM', (req, res) => {
                 .then(data => res.send(data));
 });
 
+// get cached search data from last search
+router.get('/events/cache', (req, res) => {
+    eventService.getCachedEvents()
+                .then(data => res.send(data));
+});
+
 // get events in user's interest list
 router.get('/user/events', (req, res) => {
     userService.getInterestedEvents(req)

@@ -13,6 +13,9 @@ const config = {
     },
     db: {
         mlabUrl : 'mongodb://user:411user@ds249583.mlab.com:49583/event_planner'
+    },
+    redis: {
+        TIMEOUT_IN_SECONDS: 600
     }
 }
 

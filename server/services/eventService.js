@@ -3,23 +3,45 @@ const bodyParser = require('body-parser');
 
 const config = require('../config');
 
+// redis module for caching:
+const redisClient = require('../modules/redisClient');
+const TIMEOUT_IN_SECONDS = config.redis.TIMEOUT_IN_SECONDS;
+
 // MongoDB models:
 const userEventModels = require('../models/userEventModels');
 const EventModel = userEventModels.EventModel;
 const UserModel = userEventModels.UserModel;
 
+const getCachedEvents = () => {
+    console.log('\ngetCahcedEvents!\n');
+    cachedEvents = {}
+    return new Promise((resolve, reject) => {
+        redisClient.get('cachedEvents/EB', data => {
+            console.log('get EB cache!');
+            if (data) {
+                cachedEvents.EB = JSON.parse(data)['events'];
+            }
+        });
+        redisClient.get('cachedEvents/TM', data => {
+            console.log('get TM cache!');
+            if (data) {
+                cachedEvents.TM = JSON.parse(data)['_embedded']['events'];
+            }
+        });
+        // could be a better way to resolve async function calls
+        setTimeout(() => {
+            console.log('resolve!');
+            resolve(cachedEvents);
+        }, 500);
+    });
+}
+
 const getEventsEB = (req) => {
 
-    // console.log(req.query);
-    // console.log('\n\n\n!!!!');
     location_address = req.query['location.address'];
     location_within = req.query['location.within'];
     start_data_range_start = req.query['start_date.range_start'];
     start_date_range_end = req.query['start_date.range_end'];
-
-    // console.log(location_address);
-    // console.log(start_data_range_start);
-    // console.log(start_date_range_end);
 
     const EB_options = { method: 'GET',
     url: config.app.EB.apiurl,
@@ -37,10 +59,21 @@ const getEventsEB = (req) => {
     };
 
     return new Promise((resolve, reject) => {
-        request(EB_options, function (error, response, body) {
-            if (error) throw new Error(error);
-            jsonbody = JSON.parse(body);
-            resolve(jsonbody);
+        const key = JSON.stringify(EB_options.qs);
+        const key_cache = 'cachedEvents/EB';
+        redisClient.get(key, data => {
+            if (data) {
+                resolve(JSON.parse(data));
+            } else {
+                request(EB_options, function (error, response, body) {
+                    if (error) throw new Error(error);
+                    redisClient.set(key, body, redisClient.redisPrint);
+                    redisClient.set(key_cache, body, () => console.log('set EB cache!'));
+                    redisClient.expire(key, TIMEOUT_IN_SECONDS);
+                    jsonbody = JSON.parse(body);
+                    resolve(jsonbody);
+                });
+            }
         });
     });
 }
@@ -70,15 +103,27 @@ const getEventsTM = (req) => {
     };
 
     return new Promise((resolve, reject) => {
-        request(TM_options, function (error, response, body) {
-            if (error) throw new Error(error);
-            jsonbody = JSON.parse(body);
-            resolve(jsonbody._embedded.events);
+        const key = JSON.stringify(TM_options.qs);
+        const key_cache = 'cachedEvents/TM';
+        redisClient.get(key, data => {
+            if (data) {
+                resolve(JSON.parse(data));
+            } else {
+                request(TM_options, function (error, response, body) {
+                    if (error) throw new Error(error);
+                    redisClient.set(key, body, redisClient.redisPrint);
+                    redisClient.set(key_cache, body, () => console.log('set TM cache!'));
+                    redisClient.expire(key, TIMEOUT_IN_SECONDS);
+                    jsonbody = JSON.parse(body);
+                    resolve(jsonbody._embedded.events);
+                });
+            }
         });
     });
 }
 
 module.exports = {
     getEventsEB,
-    getEventsTM
+    getEventsTM,
+    getCachedEvents
 }
