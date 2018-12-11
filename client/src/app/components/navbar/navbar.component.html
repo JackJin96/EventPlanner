@@ -28,20 +28,9 @@ $(function(){
         <ul class="nav navbar-nav">
           <li><a href="">Home</a></li>
           <li><a *ngIf="isLoggedIn" href="profile">My Profile</a></li>
-          <!-- <li class="nav-item dropdown">
-              <a *ngIf="isLoggedIn" class="nav-link dropdown-toggle" href="profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Profile
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="profile">Events</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="profile">Calendar</a>
-              </div>
-          </li> -->
           <li><a href="about">About Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <!-- <li *ngIf="!isLoggedIn"><a href="login"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
           <li *ngIf="!isLoggedIn"><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <li *ngIf="isLoggedIn"><a href="login"> Hello, {{ firstName }}</a></li>
         </ul>
