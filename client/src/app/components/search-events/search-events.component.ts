@@ -179,10 +179,10 @@ export class SearchEventsComponent implements OnInit {
     if (this.isLoggedIn) {
       this.http.post('http://localhost:8000/api/v1/user/event', { event: event, user: this.user })
       .subscribe(eventPosted => {
-        if (eventPosted) {
-          alert('You have added: \n\n' + eventPosted['name'] + '\n\n to your profile!');
-        } else {
+        if (eventPosted['warning']) {
           alert('You have already added the event to your profile!');
+        } else {
+          alert('You have added: \n\n' + eventPosted['name'] + '\n\n to your profile!');
         }
       });
     } else {
