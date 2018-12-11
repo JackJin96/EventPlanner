@@ -2,10 +2,11 @@
 	box-sizing: border-box;
 }
 body {
-        min-height: 800px;
-        color: white;
-        background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/PDaTSuJ/videoblocks-vj-light-event-concert-dance-music-videos-stage-party-abstract-led-neon-tunnel-background-loop_hcdco4o8m_thumbnail-full01.png');
-        background-repeat: repeat-y;
+    padding: 5%;
+    min-height: 800px;
+    color: white;
+    background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/PDaTSuJ/videoblocks-vj-light-event-concert-dance-music-videos-stage-party-abstract-led-neon-tunnel-background-loop_hcdco4o8m_thumbnail-full01.png');
+    background-repeat: repeat-y;
 
     padding-top: 70px;
     .heading{
@@ -36,28 +37,26 @@ body {
     }
 
     .event-detail {
-        padding-top: 1%;
-        padding-bottom:8%;
+        padding-top: 50%;
+        // padding-bottom:8%;
         text-align:center;
-        background:white;
+        background:black;
     }
 
-    /*
-    .panel {
-        text-align: center;
-        height: 30em;
+    .event-name {
+        margin-top: 10%;
     }
-    .img {
-        width: auto;
-        max-height: 100%;
+
+    button {
+        background-color: black;
     }
-    */
 
     .panel {
         width: 100%;
         text-align: left;
         height: 29em;
         border: gray;
+        background-color: black;
     }
 
     .img-responsive {
@@ -79,19 +78,19 @@ body {
         //background: -webkit-linear-gradient(90deg,white 35%, black 75%);
         //background: linear-gradient(180deg, black 25%,white 100%);
       }
-      
+
       .hovereffect .overlay {
         width: 100%;
         height: 110%;
         position: absolute;
         overflow: hidden;
-        filter:alpha(opacity=0);
+        filter: alpha(opacity=0);
         top: 0;
         left: 0;
         padding: 3em;
         text-align: left;
       }
-      
+
       .hovereffect img {
         display: block;
         position: relative;
