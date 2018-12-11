@@ -64,13 +64,13 @@ body {
 
     .hovereffect {
         width: 100%;
-        height: 100%;
+        height: 19em;
         float: left;
         overflow: hidden;
         position: relative;
         text-align: center;
         cursor: default;
-        background: gray;
+        background: black;
  
         //background: -webkit-linear-gradient(90deg,white 35%, black 75%);
         //background: linear-gradient(180deg, black 25%,white 100%);
@@ -136,7 +136,7 @@ body {
       
       
       .hovereffect:hover img {
-        opacity: 0.6;
+        opacity: 0.2;
         //color:black;
         filter: alpha(opacity=60);
         -webkit-transform: translate3d(0,0,0);
