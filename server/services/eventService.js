@@ -64,7 +64,7 @@ const getEventsEB = (req) => {
                 request(EB_options, function (error, response, body) {
                     if (error) throw new Error(error);
                     redisClient.set(key, body, redisClient.redisPrint);
-                    redisClient.set(key_cache, body, redisPrint);
+                    redisClient.set(key_cache, body, redisClient.redisPrint);
                     redisClient.expire(key, TIMEOUT_IN_SECONDS);
                     jsonbody = JSON.parse(body);
                     resolve(jsonbody);
