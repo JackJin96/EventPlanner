@@ -68,16 +68,16 @@
                     <img class="img-responsive" [src]="EB_event.img" alt=""> 
                     <div class="overlay">
                        <h5> {{EB_event.desc }} </h5>
-                       <a class="info" href="{{EB_event.url}}" target="_blank"></a>
+                      <a class="info" href="{{EB_event.url}}" target="_blank"></a>
                     </div>
-                 
+                  </div>
                     <div class="event-detail">
                       <h4>{{ EB_event.name }}</h4>
                       <p>{{ EB_event.date }}</p>
                       <div class="interestedButton"><button (click)="clickInterested(EB_event)">Interested
                       </button></div>
                     </div>
-                  </div>
+                  
               </div>
               </div>
             </div>
@@ -94,13 +94,14 @@
                            <a class="info" href="{{TM_event.url}}" target="_blank"></a>
                         </div>
     
+                      </div>
                         <div class="event-detail">
                           <h4>{{ TM_event.name }}</h4>
                           <p>{{ TM_event.date }}</p>
                           <div class="interestedButton"><button (click)="clickInterested(TM_event)">Interested
                           </button></div>
                       </div>
-                      </div>
+                      
                   </div>
                   </div>
                 </div>
