@@ -15,11 +15,46 @@
 
 
   <div class="container heading">
-    <div class="row hello">
-        <h1>EventPlanner</h1>
-        <p>Much more than event search.</p>
-    </div>
-      <div class="row searching">
+      <header>
+          <div class="overlay">
+              <div class="row searching">
+                  <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+                      <div class="col-sm-3" >
+                        <label> Location</label>
+                        <input class="w3-input w3-border" type="text" id="Location" ngModel name="location">
+                      </div>
+                      <div class="col-sm-1">
+                        <label>Range</label>
+                        <input class="w3-input w3-border" type="text" id="search_range" ngModel name="search_range">
+                      </div>
+                      <div class="col-sm-3">
+                        <label>Start Date</label>
+                        <input class="w3-input w3-border" type="date" id="StartDate" ngModel name="start_date">
+                      </div>
+                      <div class="col-sm-3">
+                        <label>End Date</label>
+                        <input class="w3-input w3-border" type="date" id="EndDate" ngModel name="end_date">
+                      </div>
+                      <div class="col-sm-2">
+                        <label><i class="fa fa-search"></i> Search</label>
+                          <button class="w3-button w3-block w3-black">
+                            <i class="fa fa-search"></i> Search
+                          </button>
+                      </div>
+                  </form>
+                </div>
+          </div>
+          <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+          </video>
+          <div class="container h-100">
+            <div class="d-flex text-center h-100">
+              <div class="my-auto w-100 text-white">
+              </div>
+            </div>
+          </div>
+        </header>
+      <!-- <div class="row searching">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
             <div class="col-sm-3" >
               <label> Location</label>
@@ -44,7 +79,7 @@
                 </button>
             </div>
         </form>
-      </div>
+      </div> -->
     </div>
 
 
