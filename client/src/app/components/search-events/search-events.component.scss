@@ -9,6 +9,9 @@ body {
     background-repeat: repeat-y;
 
     padding-top: 70px;
+    .w3-input {
+        color: black;
+    }
     .heading{
         padding: 2%;
         background-color: #d8d8d8;
@@ -50,6 +53,7 @@ body {
     }
 
     .panel {
+        opacity: 0.85;
         width: 100%;
         text-align: left;
         height: 29em;
