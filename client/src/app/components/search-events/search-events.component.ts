@@ -71,8 +71,8 @@ export class SearchEventsComponent implements OnInit {
                                      name: data['EB'][key].name.text,
                                      date: data['EB'][key].start.local.substring(0,10),
                                      desc: (data['EB'][key].description.text &&
-                                                      data['EB'][key].description.text.length > 500)?
-                                                      data['EB'][key].description.text.substring(0, 500) :
+                                                      data['EB'][key].description.text.length > 300)?
+                                                      data['EB'][key].description.text.substring(0, 300) :
                                                       data['EB'][key].description.text,
                                      website: "EventBrite",
                                      img: data['EB'][key].logo ? data['EB'][key].logo.url : this.DEAULT_IMG_URL });
@@ -89,8 +89,8 @@ export class SearchEventsComponent implements OnInit {
                     this.TM_events.push({ url: data['TM'][key].url,
                                   name: data['TM'][key].name,
                                   date: data['TM'][key].dates.start.localDate,
-                                  desc: data['TM'][key].info ? ((data['TM'][key].info.length > 500)?
-                                                 data['TM'][key].info.substring(0, 500) :
+                                  desc: data['TM'][key].info ? ((data['TM'][key].info.length > 300)?
+                                                 data['TM'][key].info.substring(0, 300) :
                                                  data['TM'][key].info): "",
                                   website: "TicketMaster",
                                   img: imgurl ? imgurl: this.DEAULT_IMG_URL });
@@ -127,8 +127,8 @@ export class SearchEventsComponent implements OnInit {
                          name: data[key].name.text,
                          date: data[key].start.local.substring(0,10),
                          desc: (data[key].description.text &&
-                                          data[key].description.text.length > 500)?
-                                          data[key].description.text.substring(0, 500) :
+                                          data[key].description.text.length > 300)?
+                                          data[key].description.text.substring(0, 300) :
                                           data[key].description.text,
                          website: "EventBrite",
                          img: data[key].logo ? data[key].logo.url : this.DEAULT_IMG_URL });
@@ -165,8 +165,8 @@ export class SearchEventsComponent implements OnInit {
         events.push({ url: data[key].url,
                       name: data[key].name,
                       date: data[key].dates.start.localDate,
-                      desc: data[key].info ? ((data[key].info.length > 500)?
-                                     data[key].info.substring(0, 500) :
+                      desc: data[key].info ? ((data[key].info.length > 300)?
+                                     data[key].info.substring(0, 300) :
                                      data[key].info): "",
                       website: "TicketMaster",
                       img: imgurl ? imgurl: this.DEAULT_IMG_URL });
