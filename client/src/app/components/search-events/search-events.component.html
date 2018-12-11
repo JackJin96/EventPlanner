@@ -1,5 +1,6 @@
 <head>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 
@@ -58,25 +59,57 @@
             <h4>{{ location }} | {{ search_range }} miles | from {{ display_start_date }} to {{ display_end_date }}</h4>
 
             <div class="row">
-            <div class="col-md-4 col-sm-2" *ngFor= "let EB_event of EB_events; let i = index">
+              <div class="col-sm-6">
+            <div *ngFor= "let EB_event of EB_events; let i = index">
 
               <div class="panel-group">
                 <div class="panel panel-default">
                   <div class="hovereffect">
                     <img class="img-responsive" [src]="EB_event.img" alt=""> 
                     <div class="overlay">
+                       <h5> {{EB_event.desc }} </h5>
                        <a class="info" href="{{EB_event.url}}" target="_blank"></a>
                     </div>
-                    <h4>{{ EB_event.name }}</h4>
-                    <p>{{ EB_event.date }}</p>
-                    <div class="interestedButton"><button (click)="clickInterested(EB_event)">Interested</button></div>
-
-                </div>
-
+                 
+                    <div class="event-detail">
+                      <h4>{{ EB_event.name }}</h4>
+                      <p>{{ EB_event.date }}</p>
+                      <div class="interestedButton"><button (click)="clickInterested(EB_event)">Interested
+                      </button></div>
+                    </div>
+                  </div>
               </div>
               </div>
             </div>
           </div>
+
+            <div class="col-sm-6">
+            <div *ngFor= "let TM_event of TM_events; let i = index">
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                      <div class="hovereffect">
+                        <img class="img-responsive" [src]="TM_event.img" alt=""> 
+                        <div class="overlay">
+                          <h5> {{ TM_event.desc }}</h5>
+                           <a class="info" href="{{TM_event.url}}" target="_blank"></a>
+                        </div>
+    
+                        <div class="event-detail">
+                          <h4>{{ TM_event.name }}</h4>
+                          <p>{{ TM_event.date }}</p>
+                          <div class="interestedButton"><button (click)="clickInterested(TM_event)">Interested
+                          </button></div>
+                      </div>
+                      </div>
+                  </div>
+                  </div>
+                </div>
+
+
+            </div>
+          </div>
+
+        
 
 
           
