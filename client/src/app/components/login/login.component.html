@@ -3,17 +3,22 @@
   <div class='container'>
     <div class='row'>
       <div *ngIf='loggedIn'>
+        <div class="welcome">
+          <h1>Welcome Back!</h1>
+        </div>
         <img src="{{ user.photoUrl }}">
         <div>
-          <h4>{{ user.name }}</h4>
-          <p>{{ user.email }}</p>
+          <h1>{{ user.name }}</h1>
+          <h4>{{ user.email }}</h4>
         </div>
       </div>
     </div>
-    <div class='row'>
-        <button class="btn btn-primary" (click)="signInWithGoogle()" *ngIf="!loggedIn">Google Login</button>
-        <button class="btn btn-primary" (click)="signInWithFB()" *ngIf="!loggedIn">Facebook Login</button>
+    <div class="row">
+      <button type="button" class="btn btn-success btn-lg" (click)="signInWithGoogle()" *ngIf="!loggedIn">Google Login</button>
     </div>
-    <button class="btn btn-primary" (click)="signOut()" *ngIf="loggedIn">Log Out</button>
+    <div class="row">
+      <button type="button" class="btn btn-primary btn-lg" (click)="signInWithFB()" *ngIf="!loggedIn">Facebook Login</button>
+    </div>
+    <button class="btn btn-primary btn-lg" (click)="signOut()" *ngIf="loggedIn">Log Out</button>
   </div>
 </body>

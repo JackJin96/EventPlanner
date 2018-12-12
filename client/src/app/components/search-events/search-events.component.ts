@@ -100,10 +100,6 @@ export class SearchEventsComponent implements OnInit {
              });
   }
 
-  get_substr(s) {
-    return s.substring(0,500);
-  }
-
   getEvents(port) {
     const EB_headers = new HttpHeaders()
           // .set('Authorization', 'my-auth-token')
@@ -199,11 +195,9 @@ export class SearchEventsComponent implements OnInit {
 
     this.display_start_date = form.form.value.start_date;
     this.start_date = (form.form.value.start_date == "") ? "" : form.form.value.start_date + 'T00:00:00Z';
-    //this.checkDates(this.start_date);
 
     this.display_end_date = form.form.value.end_date;
     this.end_date = (form.form.value.end_date == "") ? "" : form.form.value.end_date + 'T00:00:00Z';
-    //this.checkDates(this.end_date);
 
     if ( isNaN(Number(this.search_range)) ) {
       alert('Please enter a valid Search Range');
