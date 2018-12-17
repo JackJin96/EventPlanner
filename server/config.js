@@ -1,3 +1,5 @@
+// shouldn't be uploaded, but is uploaded only for direct deployment
+
 const config = {
     app: {
         port: 8000,
